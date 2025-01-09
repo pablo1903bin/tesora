@@ -1,0 +1,16 @@
+{
+    "ss" : [
+      {
+        "d" : "DOLAR AMERICANO",
+        "s" : "0.01",
+        "cD" : "USD"
+      },
+      {
+        "d" : "PESO MEXICANO",
+        "s" : "0.14",
+        "cD" : "MXP"
+      }
+    ],
+    "cR" : "OK",
+    "sessionId" : "l4qQGeeQztqtgaCu6oZJDM9fQzE"
+  }

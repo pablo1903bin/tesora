@@ -1,0 +1,14 @@
+{
+    "home_titulo": "Tesoreria",
+    "home_saludo":"Hola!",
+    "home_text_default":"Invitado",
+    "hoe_gastos": "Gastos",
+    "home_sin_data":"Sin datos",
+     
+    
+    "home_error":"Hubo un error inesperado",
+    "home_error_1": "Error al cargar cooperaciones",
+    "home_error_2": "Error al cargar los gastos",
+    "home_vacio":"No hay gastos disponibles"
+  }
+  

@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tesora",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=appbar_enabled=true",
+                "--dart-define=APP_VERSION=1.0.5",
+                "--dart-define=HOST_API=https://bancadigital.monex.com.mx/mobile/",
+                "--dart-define=S_USER=CMENDOZA",
+                "--dart-define=S_SESSION_ID=definir",
+                "--dart-define=COOKIES=cookies",
+                "--dart-define=MOC_ENABLED=true",
+                "--dart-define=S_SO=FLUTTER",
+                "--dart-define=S_ID_CONTRATO_ONE=1124871",
+                "--dart-define=S_NOMBRE_CLIENTE=CECILIO MIGUEL MENDOZA CERVANTES",
+                "--dart-define=S_FECHA_ULTIMO_ACCESO=02/09/2024",
+                "--dart-define=S_PERMISOS=11,12,14,17,23,24,42,72,1063,1090,1087,1088,1090",
+                "--dart-define=S_CONTRATOS={\"cuentas\":[{\"titular\":\"CECILIO MIGUEL MENDOZA CERVANTES\",\"idContrato\":223456,\"refNumContrato\":\"556438\",\"saldoMxn\":\"10000.00\"}, {\"titular\":\"FRANCISCO JAVIER NEGRETE JUAREZ\",\"idContrato\":45123,\"refNumContrato\":\"112331\",\"saldoMxn\":\"5500.00\"}, {\"titular\":\"HUGO DAVID JIMENEZ JUAREZ\",\"idContrato\":12346,\"refNumContrato\":\"421332\",\"saldoMxn\":\"150.50\"}, {\"titular\":\"MAURICIO IVAN SALINAS ORTIZ\",\"idContrato\":44323,\"refNumContrato\":\"432532\",\"saldoMxn\":\"1505000.50\"}]}",
+                "--dart-define=S_TIPO=APP",
+            ]
+        }
+    ]
+}

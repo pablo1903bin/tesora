@@ -1,0 +1,88 @@
+{
+    "data": {
+        "dispositivos": [
+            {
+                "fecha": "06/10/2024 09:48:05",
+                "ubicacion": "MexicoCity",
+                "id": 55,
+                "so": "AN",
+                "modelo": "SamsungGalaxy",
+                "uuid": "123456-654789-456123-654456"
+            },
+            {
+                "fecha": "10/10/2024 14:53:01",
+                "ubicacion": "MexicoCity",
+                "id": 57,
+                "so": "AN",
+                "modelo": "SamsungGalaxy",
+                "uuid": "123456-654789-456123-654457"
+            },
+            {
+                "fecha": "10/10/2024 16:40:35",
+                "ubicacion": "MexicoCity",
+                "id": 63,
+                "so": "AN",
+                "modelo": "SamsungGalaxy",
+                "uuid": "123456-654789-456123-000003"
+            },
+            {
+                "fecha": "11/10/2024 08:19:05",
+                "ubicacion": "MexicoCity",
+                "id": 64,
+                "so": "AN",
+                "modelo": "SamsungGalaxy",
+                "uuid": "123456-654789-456123-000003"
+            },
+            {
+                "fecha": "11/10/2024 08:23:19",
+                "ubicacion": "MexicoCity",
+                "id": 65,
+                "so": "AN",
+                "modelo": "SamsungGalaxy",
+                "uuid": "123456-654789-456123-000003"
+            },
+            {
+                "fecha": "11/10/2024 10:10:54",
+                "ubicacion": "Mexico - Santiago de Querétaro",
+                "id": 66,
+                "so": "IPH",
+                "modelo": "x86_64",
+                "uuid": "04E8B543-CE84-4BD0-9A1D-7AAF8C5BE11B"
+            },
+            {
+                "fecha": "11/10/2024 10:18:31",
+                "ubicacion": "Mexico - Santiago de Querétaro",
+                "id": 67,
+                "so": "IPH",
+                "modelo": "x86_64",
+                "uuid": "43910D13-91C1-49FC-A119-F33EE01117E6"
+            },
+            {
+                "fecha": "11/10/2024 10:28:14",
+                "ubicacion": "Mexico - Santiago de Querétaro",
+                "id": 68,
+                "so": "IPH",
+                "modelo": "x86_64",
+                "uuid": "61E94802-DB6F-4769-BFDB-D3C0D672234D"
+            },
+            {
+                "fecha": "11/10/2024 10:30:45",
+                "ubicacion": "Mexico - Santiago de Querétaro",
+                "id": 69,
+                "so": "IPH",
+                "modelo": "x86_64",
+                "uuid": "61E94802-DB6F-4769-BFDB-D3C0D672234D"
+            },
+            {
+                "fecha": "12/10/2024 08:07:12",
+                "ubicacion": "Mexico - Santiago de Querétaro",
+                "id": 70,
+                "so": "IPH",
+                "modelo": "x86_64",
+                "uuid": "61E94802-DB6F-4769-BFDB-D3C0D672234D"
+            }
+        ]
+    },
+    "m": "Exito",
+    "cR": "OK"
+}

@@ -1,0 +1,157 @@
+{
+   "data":{
+      "mensaje":null,
+      "data":[
+         {
+            "cuentaPropia":[
+               {
+                  "idContrato":1230360,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"112180000032155142",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"3215514",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"20\/06\/2023",
+                  "idCuenta":6298225,
+                  "nombreBanco":"BANCO MONEX"
+               },
+               {
+                  "idContrato":1230360,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"012180014880983445",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"01488098344",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"04\/04\/2024",
+                  "idCuenta":6755874,
+                  "nombreBanco":"BBVA BANCOMER"
+               },
+               {
+                  "idContrato":1230360,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"646180115433039448",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"11543303944",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"05\/04\/2024",
+                  "idCuenta":6757219,
+                  "nombreBanco":"STP"
+               }
+            ],
+            "contrato":{
+               "clabeSpid":null,
+               "idContrato":"1230360",
+               "descCveProducto":"SERVICIOS BANCARIOS",
+               "idPerfil":"4",
+               "cveTipContrato":"PFBCVDD",
+               "empresa":"BANCO MONEX S.A. INSTITUCION DE BANCA MULTIPLE, MONEX GRUPO FINANCIERO",
+               "descCveTipContrato":"PERSONA FISICA COMPRAVENTA DE DIVISAS Y SERVICIOS FINANCIEROS",
+               "clabe":"112180000029537689",
+               "idTitular":"1514709",
+               "cveProducto":"BCOMDI",
+               "refNumContrato":"2953768",
+               "idEmpresa":"8",
+               "nombrePromotor":"ADRIANA MENDOZA CHAVEZ",
+               "descSucursal":"CIUDAD DE MEXICO",
+               "idOficina":"22",
+               "oficina":"CIUDAD DE MEXICO",
+               "nomTitular":"CECILIO MIGUEL MENDOZA CERVANTES",
+               "perJuridicaTitular":"PF"
+            }
+         },
+         {
+            "cuentaPropia":[
+               {
+                  "idContrato":1332463,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":null,
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"4152313172018892",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"12\/03\/2020",
+                  "idCuenta":5004402,
+                  "nombreBanco":"BBVA BANCOMER"
+               },
+               {
+                  "idContrato":1332463,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"112180000029537689",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"2953768",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"18\/09\/2020",
+                  "idCuenta":5155180,
+                  "nombreBanco":"BANCO MONEX"
+               },
+               {
+                  "idContrato":1332463,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"646180115433039448",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"11543303944",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"15\/04\/2021",
+                  "idCuenta":5356696,
+                  "nombreBanco":"STP"
+               },
+               {
+                  "idContrato":1332463,
+                  "fechaHoraValidacion":null,
+                  "idUsuarioValidador":0,
+                  "nombreBeneficiario":"CECILIO MIGUEL MENDOZA CERVANTES",
+                  "clabe":"135180330022469553",
+                  "firmado":true,
+                  "validada":false,
+                  "cuentaBeneficiario":"33002246955",
+                  "fechaVigencia":null,
+                  "fechaHoraRegistro":"12\/06\/2024",
+                  "idCuenta":6975453,
+                  "nombreBanco":"NACIONAL FINANCIERA S.A."
+               }
+            ],
+            "contrato":{
+               "clabeSpid":null,
+               "idContrato":"1332463",
+               "descCveProducto":"SERVICIOS BANCARIOS",
+               "idPerfil":"4",
+               "cveTipContrato":"PFBCVDD",
+               "empresa":"BANCO MONEX S.A. INSTITUCION DE BANCA MULTIPLE, MONEX GRUPO FINANCIERO",
+               "descCveTipContrato":"PERSONA FISICA COMPRAVENTA DE DIVISAS Y SERVICIOS FINANCIEROS",
+               "clabe":"112180000032155142",
+               "idTitular":"1514709",
+               "cveProducto":"BCOMDI",
+               "refNumContrato":"3215514",
+               "idEmpresa":"8",
+               "nombrePromotor":"ADRIANA MENDOZA CHAVEZ",
+               "descSucursal":"CIUDAD DE MEXICO",
+               "idOficina":"22",
+               "oficina":"CIUDAD DE MEXICO",
+               "nomTitular":"CECILIO MIGUEL MENDOZA CERVANTES",
+               "perJuridicaTitular":"PF"
+            }
+         }
+      ],
+      "respuesta":0
+   },
+   "m":"Exito",
+   "cR":"OK",
+   "sessionId":"FObJqp5T69IBa0mfTz9x787tgzE"
+}

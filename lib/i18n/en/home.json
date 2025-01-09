@@ -1,0 +1,12 @@
+{
+    "home_titulo": "Treasury",
+    "home_saludo": "Hello!",
+    "home_text_default": "Guest",
+    "hoe_gastos": "Expenses",
+    "home_sin_data": "No data",
+    
+    "home_error": "There was an unexpected error",
+    "home_error_1": "Error loading cooperations",
+    "home_error_2": "Error loading expenses",
+    "home_vacio": "No expenses available"
+}

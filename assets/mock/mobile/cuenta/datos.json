@@ -1,0 +1,54 @@
+{
+	"cR" :"OK",
+	"m":"Exito",
+	"data":{
+		"contratos":
+		[
+			{
+                "refNumContrato": "1268069",
+                "clabeSpid": null,
+                "producto": "CUENTA MONEX MULTIDIVISA CON INTERESES",
+                "idContrato": 841776,
+                "clabe": "112180000012680695",
+                "titular": "MskWesterqq Scotdu McdanbPF",
+                "swift": "MONXMXMMXXX"
+            },
+            {
+                "refNumContrato": "2457646",
+                "clabeSpid": "112962000024576465",
+                "producto": "CUENTA MONEX MULTIDIVISA CON INTERESES",
+                "idContrato": 1124871,
+                "clabe": "112180000024576467",
+                "titular": "MskMoline PM",
+                "swift": "MONXMXMMXXX"
+            },
+            {
+                "refNumContrato": "2995603",
+                "clabeSpid": null,
+                "producto": "CUENTA MONEX MULTIDIVISA CON INTERESES",
+                "idContrato": 1245136,
+                "clabe": "112180000029956037",
+                "titular": "MskDevontl Aprilbd FitzgeuPF",
+                "swift": "MONXMXMMXXX"
+            },
+            {
+                "refNumContrato": "3110343",
+                "clabeSpid": "112962000031103436",
+                "producto": "CUENTA MONEX MULTIDIVISA CON INTERESES",
+                "idContrato": 1289691,
+                "clabe": "112180000031103438",
+                "titular": "MskKaramj PM",
+                "swift": "MONXMXMMXXX"
+            },
+            {
+                "refNumContrato": "32171271",
+                "clabeSpid": null,
+                "producto": "CUENTA MONEX MULTIDIVISA CON INTERESES",
+                "idContrato": 1333078,
+                "clabe": "112180000032171715",
+                "titular": "MskDevontl Aprilbd FitzgeuPF",
+                "swift": "MONXMXMMXXX"
+            }
+		]
+	}
+}

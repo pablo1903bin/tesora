@@ -1,0 +1,62 @@
+{
+    "data": {
+        "inversiones": [
+            {
+                "cveDivisa": "MXP",
+                "inversiones": [
+                    {
+                        "idCede": 1,
+                        "plazo": 150,
+                        "fechaVencimiento": "13-oct-2025",
+                        "divisa": "MXP",
+                        "importe": 150000,
+                        "situacion": "Vigente",
+                        "pagoTermino": "Pagaderos a final de cada mes",
+                        "tasaCliente:": 6.5,
+                        "totalNeto": 200000
+                    },
+                    {
+                        "idCede": 2,
+                        "plazo": 10,
+                        "fechaVencimiento": "13-dic-2024",
+                        "divisa": "MXP",
+                        "importe": 60000,
+                        "situacion": "Vigente",
+                        "pagoTermino": "Pagaderos a final de cada mes",
+                        "tasaCliente:": 6.5,
+                        "totalNeto": 200000
+                    }
+                ]
+            },
+            {
+                "cveDivisa": "USD",
+                "inversiones": [
+                    {
+                        "idCede": 1,
+                        "plazo": 20,
+                        "fechaVencimiento": "25-oct-2025",
+                        "divisa": "USD",
+                        "importe": 1600000,
+                        "situacion": "Vigente",
+                        "pagoTermino": "Pagaderos a final de cada mes",
+                        "tasaCliente:": 6.5,
+                        "totalNeto": 1610000
+                    },
+                    {
+                        "idCede": 2,
+                        "plazo": 365,
+                        "fechaVencimiento": "01-dic-2024",
+                        "divisa": "USD",
+                        "importe": 10000,
+                        "situacion": "Vigente",
+                        "pagoTermino": "Pagaderos a final de cada mes",
+                        "tasaCliente:": 6.5,
+                        "totalNeto": 1610000
+                    }
+                ]
+            }
+        ]
+    },
+    "m": "Exito consultando inversiones",
+    "cR": "OK"
+}
