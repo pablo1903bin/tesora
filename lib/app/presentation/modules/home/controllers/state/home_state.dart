@@ -18,5 +18,6 @@ class HomeState with _$HomeState {
     @Default("") String? version,
     RecordatorioResponse? recordatorioResponse,
     List<Model>? listaAlarmas,
+    @Default(true) bool? mostrarTutorial,
   }) = _HomeState;
 }

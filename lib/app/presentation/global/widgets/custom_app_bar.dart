@@ -6,16 +6,17 @@ import 'package:tesora/app/presentation/global/widgets/text_size.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
-
-  const CustomAppBar({super.key, this.title});
+  final GlobalKey? cajaTotalDisponible;
+  const CustomAppBar({this.cajaTotalDisponible, super.key, this.title});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
+    print("Construir el AppBar...");
     return AppBar(
-      title: autoSizeTextCards(titulo: title ?? "", fontSize: 24, align: TextAlign.start),
+      title: autoSizeTextCards(titulo:title, fontSize: 24, align: TextAlign.start),
       backgroundColor: colorSueve,
       leading: Builder(
         builder: (context) => IconButton(
@@ -42,6 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
         IconButton(
+          key: cajaTotalDisponible,
           color: colorPrincipal,
           icon: const Icon(Icons.group),
           onPressed: () {

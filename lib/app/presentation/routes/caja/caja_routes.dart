@@ -1,19 +1,38 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tesora/app/presentation/controller/loading_lndicator_controller.dart';
-import 'package:tesora/app/presentation/controller/states/loading_indicator_state.dart';
 import 'package:tesora/app/presentation/modules/caja/views/caja_view.dart';
-import 'package:tesora/app/presentation/routes/go_route_helper.dart';
 import 'package:tesora/app/presentation/routes/route_path.dart';
 
 class CajaRoutes {
   static GoRoute get caja {
-    return GoRouteHelper.goRouteMulti(
-      RoutePath.caja,
-      () => const CajaView(),
-      [ // CajaController
+    return GoRoute(
+      path: RoutePath.caja,
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: const CajaView(),
+          transitionDuration: const Duration(milliseconds: 500), // Más lento
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final curvedAnimation = CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            );
 
-        GoRouteHelper.c<LoadingIndicatorController>(
-            () => LoadingIndicatorController(LoadingIndicatorState())),
+            return FadeTransition(
+              opacity: curvedAnimation,
+              child: SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(1, 0),
+                  end: Offset.zero,
+                ).animate(curvedAnimation),
+                child: child,
+              ),
+            );
+          },
+        );
+      },
+      routes: const [
+        // Define rutas hijas aquí si es necesario
       ],
     );
   }

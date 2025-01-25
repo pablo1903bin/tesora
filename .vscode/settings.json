@@ -25,5 +25,6 @@
         "ios-dev-deploy":"flutter build ios-framework --no-release --no-profile && rm -rf $MMOVILFLT_DESTINO/Debug && cp -R $MMOVILFLT_ORIGEN/Debug $MMOVILFLT_DESTINO/",
         "ios-release-deploy":"flutter build ios-framework --no-debug --no-profile && rm -rf $MMOVILFLT_DESTINO/Release && cp -R $MMOVILFLT_ORIGEN/Release $MMOVILFLT_DESTINO/",
         "ios-all-deploy":"flutter build ios-framework --no-profile && rm -rf $MMOVILFLT_DESTINO/Debug && rm -rf $MMOVILFLT_DESTINO/Release && cp -R $MMOVILFLT_ORIGEN/Debug $MMOVILFLT_DESTINO/ && cp -R $MMOVILFLT_ORIGEN/Release $MMOVILFLT_DESTINO/"
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
 }

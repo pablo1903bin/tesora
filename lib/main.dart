@@ -15,7 +15,7 @@ void main() async {
   //Activar para usar lenguaje del dispositivo
   LocaleSettings.useDeviceLocale();
   // String hostLocal = "http://192.168.100.5:8080/gateway/api";
-  String webServer = "http://45.33.13.164:8080/gateway/api";
+  String webServer = "http://66.228.52.136:8080/gateway/api";
   // Configura GetIt al inicio
   await AppDependencies.load(
     hostApi: webServer,

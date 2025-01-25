@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -15,43 +17,71 @@ import 'package:tesora/app/presentation/modules/home/widgets/flayer_skin.dart';
 import 'package:tesora/app/presentation/modules/home/widgets/ingresos_gastos_widget.dart';
 import 'package:tesora/app/presentation/modules/home/widgets/saludo_widget.dart';
 import 'package:tesora/app/presentation/routes/route_path.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../../mixin/controllers_mixin.dart';
 import '../../../mixin/mixin_repositorios_comunes.dart';
 import '../../menu/views/drawer_widget.dart';
 
-class HomePageView extends StatelessWidget with ControllersMixin, RepositoriosComunes, I18NMixin {
+class HomePageView extends StatelessWidget
+    with ControllersMixin, RepositoriosComunes, I18NMixin {
   const HomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print("Construir el widget inicial...");
     final themeController = getThemeController(context);
+    // Definimos las GlobalKeys
+    final GlobalKey cajaTotalDisponible = GlobalKey();
+    final GlobalKey cajaTotalActual = GlobalKey();
+
+    List<TargetFocus> targets = [];
+    _createTargets(targets, cajaTotalDisponible, cajaTotalActual,
+        getHomeController(context)); // Crea los objetivos del tutorial.
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      print("Despues de construir todos los widgets mostrar esto...");
+
+      print("Despues esto...");
+      _showTutorial(targets,
+          context); // Muestra el tutorial después de garantizar que todo esté listo.
+    });
     return Scaffold(
       backgroundColor: colorSueve,
-      appBar:  CustomAppBar(
+      appBar: CustomAppBar(
         title: i18n.home.home_titulo,
+        cajaTotalDisponible: cajaTotalDisponible,
       ),
       drawer: const AppDrawer(),
-      body: _getBody(context, themeController, getHomeController(context)),
+      //body: _getBody(context, cajaTotalActual, themeController,getHomeController(context)),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          final homeController = getHomeController(context);
+          await homeController.reloadData(); // Método para recargar los datos
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: _getBody(context, cajaTotalActual, themeController,
+              getHomeController(context)),
+        ),
+      ),
       floatingActionButton: const CustomFAB(),
     );
   }
 
-  Widget _getBody(BuildContext context, ThemeController themeController,
-      HomeController homeController) {
+  Widget _getBody(BuildContext context, GlobalKey cajaTotalActual,
+      ThemeController themeController, HomeController homeController) {
     //double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, left: 16, right: 16),
-      child: RefreshIndicator(
-        onRefresh: () async {
-          // Llama al método para recargar datos
-          await homeController.reloadData(); // Método para recargar los datos
-        },
+      child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
             const SaludoWidget(),
             const SizedBox(height: 12),
             CajaTesoreriaWidget(
+              cajaTotalActual: cajaTotalActual,
               onTap: () {
                 // Navegación con GoRouter
                 GoRouter.of(context).push(
@@ -206,6 +236,7 @@ class HomePageView extends StatelessWidget with ControllersMixin, RepositoriosCo
                               // Construye la lista de FlayerSkin cuando hay datos
                               final gastos = snapshot.data!;
                               return SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
                                 child: Column(
                                   children: gastos.map((gasto) {
                                     return GestureDetector(
@@ -386,4 +417,188 @@ class HomePageView extends StatelessWidget with ControllersMixin, RepositoriosCo
       ),
     );
   }
+
+  void _showTutorial(List<TargetFocus> targets, BuildContext context) {
+    late TutorialCoachMark tutorialCoachMark;
+    Future.delayed(const Duration(milliseconds: 300), () {
+      tutorialCoachMark = TutorialCoachMark(
+        targets: targets,
+        colorShadow: const Color.fromARGB(255, 154, 3, 3).withOpacity(0.3),
+        textSkip: "Saltar tutorial",
+        paddingFocus: 1.5,
+        opacityShadow: 0.8,
+        alignSkip: Alignment.bottomRight,
+        showSkipInLastTarget: false,
+        onClickTarget: (target) {
+          print("Target clickeado: ${target.identify}");
+        },
+        onClickOverlay: (target) {
+          print("Click en la sombra...");
+        },
+        onSkip: () {
+          print("Tutorial saltado");
+          return true; // Ensure a boolean value is returned
+        },
+        imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        onFinish: () {
+          print("Tutorial finalizado");
+        },
+      );
+
+      tutorialCoachMark.show(
+          context: context); // Proporciona el contexto aquí también
+    });
+  }
+}
+
+void _createTargets(List<TargetFocus> targets, GlobalKey cajaTotalDisponible,
+    GlobalKey cajaTotalActual, HomeController homeController) {
+  final isChecked = homeController
+      .state.mostrarTutorial; // Muestra el tutorial al cargar la página
+  print("Mostrar tutorial: $isChecked");
+  bool noMostrarTutorial = false;
+
+  targets.add(TargetFocus(
+    identify: "Target 1",
+    keyTarget: cajaTotalDisponible,
+    color: const Color.fromARGB(255, 1, 42, 94),
+    contents: [
+      TargetContent(
+        align: ContentAlign.bottom,
+        builder: (context, controller) {
+          return const Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 100),
+              Text(
+                "Gestiona tu Grupo de Trabajo",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  "Desde este icono puedes cambiar de grupo de trabajo, crear un nuevo grupo o administrar los existentes. Pulsa aquí para gestionar tus grupos de manera fácil y rápida.",
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
+                ),
+              ),
+            ],
+          );
+        },
+      )
+    ],
+    shape: ShapeLightFocus.RRect,
+    radius: 5,
+  ));
+
+  targets.add(TargetFocus(
+    identify: "Target 2",
+    keyTarget: cajaTotalActual,
+    color: const Color.fromARGB(255, 1, 42, 94),
+    contents: [
+      TargetContent(
+        align: ContentAlign.bottom,
+        builder: (context, controller) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Text(
+                "Saldo Total Actual",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  "Este es el monto total disponible actualmente en la caja. "
+                  "Puedes interactuar con este apartado para explorar más detalles sobre los movimientos y el historial de la caja.",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  controller.previous(); // Navega al target o focus anterior
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Cambia el color de fondo
+                  foregroundColor: Colors.white, // Cambia el color del texto
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(20), // Esquinas redondeadas
+                  ),
+                  elevation: 4, // Añade una sombra
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ), // Ajusta el tamaño interno del botón
+                ),
+                child: const Icon(
+                  Icons.chevron_left,
+                  size: 24, // Cambia el tamaño del icono
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: <Widget>[
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      noMostrarTutorial = value ?? false;
+                      // Esto asegura que se reconstruya el widget
+                      (context as Element).markNeedsBuild();
+                    },
+                  ),
+                  const Text(
+                    "No volver a mostrar",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      controller.skip(); // Finaliza el tutorial
+                      print("Tutorial finalizado por el usuario");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue, // Cambia el color de fondo
+                      foregroundColor:
+                          Colors.white, // Cambia el color del texto
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(20), // Esquinas redondeadas
+                      ),
+                      elevation: 4, // Añade una sombra
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 12,
+                      ), // Ajusta el tamaño interno del botón
+                    ),
+                    child: const Text("Entendido"), // Texto del botón
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      )
+    ],
+    shape: ShapeLightFocus.RRect,
+    radius: 5,
+  ));
 }

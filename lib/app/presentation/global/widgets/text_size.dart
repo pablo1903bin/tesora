@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:tesora/app/presentation/global/widgets/colores.dart';
 import 'package:tesora/app/presentation/global/widgets/styles%20copy.dart';
 
-AutoSizeText autoSizeTextCards({String titulo = "", TextAlign align = TextAlign.center, Color color = colorPrincipal, double fontSize = 12,}) {
+AutoSizeText autoSizeTextCards({Key? key, titulo = "", TextAlign align = TextAlign.center, Color color = colorPrincipal, double fontSize = 12,}) {
   return AutoSizeText(
+    key: key,
     titulo,
     maxLines: 1,
     minFontSize: 10,
