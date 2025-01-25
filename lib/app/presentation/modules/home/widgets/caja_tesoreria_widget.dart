@@ -7,9 +7,9 @@ import 'package:tesora/app/presentation/modules/home/controllers/home_controller
 
 class CajaTesoreriaWidget extends StatelessWidget with ControllersMixin {
   final VoidCallback onTap;
-
-  const CajaTesoreriaWidget({
-    super.key,
+  final GlobalKey? cajaTotalActual;
+  const CajaTesoreriaWidget({super.key, 
+    this.cajaTotalActual,
     required this.onTap,
   });
 
@@ -71,55 +71,65 @@ class CajaTesoreriaWidget extends StatelessWidget with ControllersMixin {
                   FutureBuilder<double>(
                     future: homeController.getTotalcaja(),
                     builder: (context, snapshot) {
-                      // Verifica el estado del Future
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        // Mientras se resuelve el Future, muestra un indicador de carga
-                        return const Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Center(
-                              child: SizedBox(
-                                width: 20, // Ajusta el ancho del indicador
-                                height: 20, // Ajusta el alto del indicador
+                      return AnimatedSwitcher(
+                        duration: const Duration(
+                            milliseconds: 400), // Duración de la transición
+                        transitionBuilder: (child, animation) {
+                          return ScaleTransition(
+                            scale: animation, // Transición de escala
+                            child: child,
+                          );
+                        },
+                        child: snapshot.connectionState ==
+                                ConnectionState.waiting
+                            ? const SizedBox(
+                                width: 24, // Ancho deseado del indicador
+                                height: 24, // Alto deseado del indicador
                                 child: CircularProgressIndicator(
-                                  strokeWidth: 2.0,
+                                  key: ValueKey(
+                                      "loading"), // Clave única para el indicador de carga
+                                  strokeWidth: 2.0, // Grosor del borde
                                 ),
-                              ),
-                            ),
-                          ],
-                        );
-                      } else if (snapshot.hasError) {
-                        // Si ocurre un error, muestra un mensaje de error
-                        return const Center(
-                          child: Text("Error al cargar el total de la caja"),
-                        );
-                      } else if (!snapshot.hasData) {
-                        // Si no hay datos, muestra un mensaje vacío
-                        return const Center(
-                          child: Text("No hay datos disponibles"),
-                        );
-                      } else {
-                        // Si se resuelve correctamente, muestra el contenido
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            Consumer<HomeController>(
-                              builder: (context, controller, child) {
-                                double? data = controller.state.totalCaja; // Obtén los datos del estado
-                                return autoSizeTextCards(
-                                  titulo: "  \$${data!.toStringAsFixed(2)} MX", // Asegúrate de que `data` sea un número
-                                  fontSize: 24,
-                                );
-                              },
-                            ),
-                          ],
-                        );
-                      }
+                              )
+                            : snapshot.hasError
+                                ? const Text(
+                                    "Error al cargar el total de la caja",
+                                    key: ValueKey(
+                                        "error"), // Clave única para el mensaje de error
+                                  )
+                                : !snapshot.hasData
+                                    ? const Text(
+                                        "No hay datos disponibles",
+                                        key: ValueKey(
+                                            "noData"), // Clave única para el mensaje sin datos
+                                      )
+                                    : Row(
+                                         key: cajaTotalActual,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const SizedBox(height: 40),
+                                          Consumer<HomeController>(
+                                            builder:
+                                                (context, controller, child) {
+                                              double? data =
+                                                  controller.state.totalCaja;
+
+                                              // Manejamos el caso donde `data` pueda ser null.
+                                              final displayValue = data?.toStringAsFixed(2) ??  "0.00";
+
+                                              return autoSizeTextCards(
+                                                key: ValueKey(displayValue), // Clave única para el texto del valor
+                                                titulo: "\$$displayValue MX", // Mostramos el valor formateado
+                                                fontSize: 24,
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                      );
                     },
-                  ),
+                  )
                 ],
               ),
             ),

@@ -8,13 +8,17 @@ import 'package:tesora/app/presentation/modules/home/controllers/state/home_stat
 
 import '../../../../states/state_notifier.dart';
 
-class HomeController extends StateNotifier<HomeState>
-    with RepositoriosComunes, MmovilRepositorios {
+class HomeController extends StateNotifier<HomeState> with RepositoriosComunes, MmovilRepositorios {
   HomeController(super.state);
+
+  Future<void> mostrarTutorial(bool mostrar) async {
+    notifica(state.copyWith(mostrarTutorial: mostrar));
+  }
 
   Future<dynamic> reloadData() async {
     await Future.delayed(const Duration(seconds: 1));
-    notifica(state.copyWith(totalCaja: 2350.50, ingresosTotal: 455.00), forzar: true);
+    notifica(state.copyWith(totalCaja: 2350.50, ingresosTotal: 455.00),
+        forzar: true);
     return state.totalCaja ?? 0.0;
   }
 
@@ -29,7 +33,7 @@ class HomeController extends StateNotifier<HomeState>
   }
 
   Future<double> getTotalcaja() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     return state.totalCaja ?? 0.0;
   }
 

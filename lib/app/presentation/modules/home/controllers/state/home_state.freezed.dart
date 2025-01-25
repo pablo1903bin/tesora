@@ -28,6 +28,7 @@ mixin _$HomeState {
   RecordatorioResponse? get recordatorioResponse =>
       throw _privateConstructorUsedError;
   List<Model>? get listaAlarmas => throw _privateConstructorUsedError;
+  bool? get mostrarTutorial => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -48,7 +49,8 @@ abstract class $HomeStateCopyWith<$Res> {
       int? level,
       String? version,
       RecordatorioResponse? recordatorioResponse,
-      List<Model>? listaAlarmas});
+      List<Model>? listaAlarmas,
+      bool? mostrarTutorial});
 
   $RecordatorioResponseCopyWith<$Res>? get recordatorioResponse;
 }
@@ -75,6 +77,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? version = freezed,
     Object? recordatorioResponse = freezed,
     Object? listaAlarmas = freezed,
+    Object? mostrarTutorial = freezed,
   }) {
     return _then(_value.copyWith(
       totalCaja: freezed == totalCaja
@@ -113,6 +116,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.listaAlarmas
           : listaAlarmas // ignore: cast_nullable_to_non_nullable
               as List<Model>?,
+      mostrarTutorial: freezed == mostrarTutorial
+          ? _value.mostrarTutorial
+          : mostrarTutorial // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -147,7 +154,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       int? level,
       String? version,
       RecordatorioResponse? recordatorioResponse,
-      List<Model>? listaAlarmas});
+      List<Model>? listaAlarmas,
+      bool? mostrarTutorial});
 
   @override
   $RecordatorioResponseCopyWith<$Res>? get recordatorioResponse;
@@ -173,6 +181,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? version = freezed,
     Object? recordatorioResponse = freezed,
     Object? listaAlarmas = freezed,
+    Object? mostrarTutorial = freezed,
   }) {
     return _then(_$HomeStateImpl(
       totalCaja: freezed == totalCaja
@@ -211,6 +220,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value._listaAlarmas
           : listaAlarmas // ignore: cast_nullable_to_non_nullable
               as List<Model>?,
+      mostrarTutorial: freezed == mostrarTutorial
+          ? _value.mostrarTutorial
+          : mostrarTutorial // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -227,7 +240,8 @@ class _$HomeStateImpl implements _HomeState {
       this.level,
       this.version = "",
       this.recordatorioResponse,
-      final List<Model>? listaAlarmas})
+      final List<Model>? listaAlarmas,
+      this.mostrarTutorial = true})
       : _listaAlarmas = listaAlarmas;
 
   @override
@@ -263,8 +277,12 @@ class _$HomeStateImpl implements _HomeState {
   }
 
   @override
+  @JsonKey()
+  final bool? mostrarTutorial;
+
+  @override
   String toString() {
-    return 'HomeState(totalCaja: $totalCaja, ingresosTotal: $ingresosTotal, gastosTotal: $gastosTotal, ingresoGasto: $ingresoGasto, botonController: $botonController, level: $level, version: $version, recordatorioResponse: $recordatorioResponse, listaAlarmas: $listaAlarmas)';
+    return 'HomeState(totalCaja: $totalCaja, ingresosTotal: $ingresosTotal, gastosTotal: $gastosTotal, ingresoGasto: $ingresoGasto, botonController: $botonController, level: $level, version: $version, recordatorioResponse: $recordatorioResponse, listaAlarmas: $listaAlarmas, mostrarTutorial: $mostrarTutorial)';
   }
 
   @override
@@ -287,7 +305,9 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.recordatorioResponse, recordatorioResponse) ||
                 other.recordatorioResponse == recordatorioResponse) &&
             const DeepCollectionEquality()
-                .equals(other._listaAlarmas, _listaAlarmas));
+                .equals(other._listaAlarmas, _listaAlarmas) &&
+            (identical(other.mostrarTutorial, mostrarTutorial) ||
+                other.mostrarTutorial == mostrarTutorial));
   }
 
   @override
@@ -301,7 +321,8 @@ class _$HomeStateImpl implements _HomeState {
       level,
       version,
       recordatorioResponse,
-      const DeepCollectionEquality().hash(_listaAlarmas));
+      const DeepCollectionEquality().hash(_listaAlarmas),
+      mostrarTutorial);
 
   @JsonKey(ignore: true)
   @override
@@ -320,7 +341,8 @@ abstract class _HomeState implements HomeState {
       final int? level,
       final String? version,
       final RecordatorioResponse? recordatorioResponse,
-      final List<Model>? listaAlarmas}) = _$HomeStateImpl;
+      final List<Model>? listaAlarmas,
+      final bool? mostrarTutorial}) = _$HomeStateImpl;
 
   @override
   double? get totalCaja;
@@ -340,6 +362,8 @@ abstract class _HomeState implements HomeState {
   RecordatorioResponse? get recordatorioResponse;
   @override
   List<Model>? get listaAlarmas;
+  @override
+  bool? get mostrarTutorial;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

@@ -13,33 +13,36 @@ class CooperacionListView extends StatelessWidget {
     required this.onItemTap,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: cooperaciones.map((cooperacion) {
-          // Calcula el porcentaje alcanzado
-          final double montoObjetivo =
-              double.tryParse(cooperacion.montoObjetivo ?? "0") ?? 0.0;
-          final double porcentajeAlcanzado = montoObjetivo > 0
-              ? (cooperacion.montoActual ?? 0) / montoObjetivo
-              : 0.0;
+@override
+Widget build(BuildContext context) {
+  return ListView.builder(
+    physics: const BouncingScrollPhysics(),
+    itemCount: cooperaciones.length, // Número de elementos en la lista
+    itemBuilder: (context, index) {
+      final cooperacion = cooperaciones[index];
+      
+      // Calcula el porcentaje alcanzado
+      final double montoObjetivo =
+          double.tryParse(cooperacion.montoObjetivo ?? "0") ?? 0.0;
+      final double porcentajeAlcanzado = montoObjetivo > 0
+          ? (cooperacion.montoActual ?? 0) / montoObjetivo
+          : 0.0;
 
-          return CooperacionCardContainer(
-            child: CardCooperaciones(
-              myWidget: CooperacionCard(
-                nombre: cooperacion.nombre,
-                descripcion: cooperacion.descripcion,
-                estado: cooperacion.estado,
-                montoObjetivo: montoObjetivo,
-                montoActual: cooperacion.montoActual ?? 0.0,
-                porcentajeAlcanzado: porcentajeAlcanzado,
-                onTap: () => onItemTap(cooperacion),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
+      return CooperacionCardContainer(
+        child: CardCooperaciones(
+          myWidget: CooperacionCard(
+            nombre: cooperacion.nombre,
+            descripcion: cooperacion.descripcion,
+            estado: cooperacion.estado,
+            montoObjetivo: montoObjetivo,
+            montoActual: cooperacion.montoActual ?? 0.0,
+            porcentajeAlcanzado: porcentajeAlcanzado,
+            onTap: () => onItemTap(cooperacion),
+          ),
+        ),
+      );
+    },
+  );
+}
+
 }
