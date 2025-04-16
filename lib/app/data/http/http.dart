@@ -34,7 +34,7 @@ class Http {
 
     switch (method) {
       case HttpMethod.post:
-        return await _client.post(url, headers: headers, body: body).timeout(const Duration(seconds: 3)); 
+        return await _client.post(url, headers: headers, body: body).timeout(const Duration(seconds: 5)); 
       case HttpMethod.patch:
         return await _client.patch(url, headers: headers, body: body);
       case HttpMethod.delete:

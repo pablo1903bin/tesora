@@ -10,6 +10,7 @@
                 "--dart-define=appbar_enabled=true",
                 "--dart-define=HOST_API_LOCAL=http://192.168.100.42:8080/gateway/api",
                 "--dart-define=HOST_API=http://66.228.52.136:8080/gateway/api",
+                "--dart-define=HOST_API_SERVER_LOCAL=http://192.168.100.23:8080/gateway/api",
                 "--dart-define=APP_VERSION=1.0.0",
                 "--dart-define=S_SESSION_ID=definir",
                 "--dart-define=COOKIES=cookies",

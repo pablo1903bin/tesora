@@ -15,9 +15,10 @@ void main() async {
   LocaleSettings.useDeviceLocale();
   // String hostLocal = "http://192.168.100.5:8080/gateway/api";  
   //String webServer = AppConfig.webServerUrl;
+  
 
   await AppDependencies.load(
-    hostApi:  const String.fromEnvironment("HOST_API"),
+    hostApi:  const String.fromEnvironment("HOST_API_SERVER_LOCAL"),
     sesion: SesionState(
         const String.fromEnvironment("S_USER"),
         const String.fromEnvironment("S_SESSION_ID"),
