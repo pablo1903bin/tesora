@@ -1,16 +1,52 @@
-# tesora
+# 📱 Tesora
 
-A new Flutter project.
+**Tesora** es una aplicación móvil desarrollada con **Flutter**, orientada a la gestión de cooperaciones y contribuciones escolares. Brinda una interfaz moderna, simple y eficiente para padres de familia y administradores.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Getting Started
 
-A few resources to get you started if this is your first Flutter project:
+Este proyecto es un punto de partida para el desarrollo de aplicaciones móviles con Flutter.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🔧 Requisitos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter SDK
+- Android Studio o Visual Studio Code
+- Emulador o dispositivo físico para pruebas
+
+---
+
+### ▶️ Cómo ejecutar el proyecto
+
+1. Clona el repositorio:
+   ```bash
+   git clone git@github.com:pablo1903bin/tesora.git
+   cd tesora
+   flutter pub get
+   flutter run
+   ```
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Flutter & Dart** – Framework principal para desarrollo móvil multiplataforma.
+- **Provider / StateNotifier** – Para la gestión de estado reactiva.
+- **GoRouter** – Para navegación declarativa y controlada entre vistas.
+- **Freezed** – Para crear modelos inmutables y clases selladas con facilidad.
+- **PostgreSQL** – Base de datos relacional utilizada en el backend.
+- **Spring Boot** – Framework en Java para construir APIs REST.
+
+---
+
+## ✍️ Autor
+
+Desarrollado con ❤️ por **Pablo Rosas**  
+🔗 [GitHub - @pablo1903bin](https://github.com/pablo1903bin)
+
+
+---
+
+## 📄 Licencia
+
+Este proyecto se encuentra bajo la licencia [MIT](LICENSE).
