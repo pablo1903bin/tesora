@@ -15,7 +15,6 @@ class SaludoWidget extends StatelessWidget with ControllersMixin, I18NMixin {
     final isDarkMode = getThemeController(context).state.isDarkMode;
     // Acceder al tema actual
     
-    final theme = Theme.of(context);
 
     return FutureBuilder<String?>(
       future: controller.getUserName(),

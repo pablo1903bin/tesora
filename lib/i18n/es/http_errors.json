@@ -2,6 +2,7 @@
     "not_found":"No encontrado",
     "network":"Sin acceso a internet",
     "unauthorized":"Sin autorización",
+    "redirection": "Conexión redirigida por la red",
     "unknown":"Error desconocido",
     "internalError":"Error interno del servidor",
     "badRequest":"Petición invalida"

@@ -298,8 +298,12 @@ class $LibAppImagesGen {
   String get loadingSplash2 => 'lib/app/images/loading_splash2.json';
 
   /// File path: lib/app/images/logo_tesoreria.png
-  AssetGenImage get logoTesoreria =>
+  AssetGenImage get logoTesoreriaPng =>
       const AssetGenImage('lib/app/images/logo_tesoreria.png');
+
+  /// File path: lib/app/images/logo_tesoreria.textClipping
+  String get logoTesoreriaTextClipping =>
+      'lib/app/images/logo_tesoreria.textClipping';
 
   /// File path: lib/app/images/mi_app_icon.png
   AssetGenImage get miAppIcon =>
@@ -323,7 +327,8 @@ class $LibAppImagesGen {
         iconSplash,
         loadingSplash,
         loadingSplash2,
-        logoTesoreria,
+        logoTesoreriaPng,
+        logoTesoreriaTextClipping,
         miAppIcon,
         perfil,
         usuario

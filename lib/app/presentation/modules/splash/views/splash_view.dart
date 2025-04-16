@@ -29,39 +29,30 @@ class _SplashScreenState extends State<SplashScreen> {
 
   // Método privado que maneja la lógica inicial del SplashScreen
   Future<void> _init() async {
-    await Future.delayed(
-        const Duration(seconds: 1)); // Simula una pausa de 2 segundos.
+    
+    //await Future.delayed(const Duration(seconds: 3));
 
-    // Obtiene el repositorio de conectividad inyectado
     final conectivityRepository = GetIt.instance<ConectivityRepository>();
-    final hayInternet =
-        await conectivityRepository.hasInternet; // Verifica si hay internet.
-    print("Hay internet?   $hayInternet");
+    final hayInternet = await conectivityRepository.hasInternet;
+
+    if (!mounted) return; // 🔒 Verificamos antes de usar context
+
     if (hayInternet) {
-      // Si hay internet, obtiene el repositorio de autenticación inyectado
       final authenticationRepository =
           GetIt.instance<AuthenticationRepository>();
-      final isSignedIn = await authenticationRepository
-          .isSignedIn; // Verifica si el usuario está autenticado.
+      final isSignedIn = await authenticationRepository.isSignedIn;
+
+      if (!mounted) return; // 🔒 Verificamos otra vez luego del await
 
       if (isSignedIn) {
-        // Si el usuario está autenticado, navega a la pantalla principal
         GoRouter.of(context).pushReplacement(RoutePath.home);
       } else {
-        // Si no está autenticado, navega a la pantalla de login
         GoRouter.of(context).pushReplacement(RoutePath.loguin);
       }
     } else {
-      // Si no hay internet, navega a una pantalla offline
-      if (mounted) {
-        // Comprueba si el widget sigue en el árbol de widgets
-        context.go(
-          RoutePath.offline, // Navega a la ruta offline
-          extra: () {
-            print("⚡ Intentando reconectar... ⚡"); // Mensaje de depuración.
-          },
-        );
-      }
+      context.go(RoutePath.offline, extra: () {
+        // mensaje de depuración
+      });
     }
   }
 

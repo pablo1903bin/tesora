@@ -1,77 +1,100 @@
 import 'package:flutter/material.dart';
 import 'package:tesora/app/presentation/global/widgets/colores.dart';
 
-class LoginErrorDialog extends StatelessWidget {
-  final String mensaje;
+import '../../../mixin/i18n_mixin.dart';
+import '../controllers/auth_controller.dart';
+
+class LoginErrorDialog extends StatelessWidget with  I18NMixin {
+  final AuthController controller;
 
   const LoginErrorDialog({
     super.key,
-    this.mensaje = 'Las credenciales proporcionadas no son correctas. Por favor, verifica tu usuario y contraseña.',
+    required this.controller,
   });
 
-  static void mostrar(BuildContext context, {String? mensaje}) {
+  static void mostrar(BuildContext context, AuthController controller) {
+    
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoginErrorDialog(mensaje: mensaje ?? '');
+        return LoginErrorDialog(controller: controller);
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: colorSueve,
+    return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(20.0),
       ),
-      title: const Row(
-        children: [
-          Icon(
-            Icons.error_outline,
-            color: Colors.redAccent,
-            size: 28,
-          ),
-          SizedBox(width: 10),
-          Text(
-            'Error',
-            style: TextStyle(
-              fontSize: 20,
-              color: colorError,
-              fontWeight: FontWeight.bold,
+      backgroundColor: colorSueve,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Icono de advertencia
+            Container(
+              decoration: BoxDecoration(
+                color: colroError2,
+                shape: BoxShape.circle,
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: const Icon(
+                Icons.error_outline,
+                color: colorError,
+                size: 50,
+              ),
             ),
-          ),
-        ],
-      ),
-      content: Text(
-        mensaje,
-        style: TextStyle(
-          fontSize: 14,
-          color: Colors.grey[700],
+            const SizedBox(height: 20),
+            // Título
+            Text(
+              i18n.loguin.unexpected_error.title,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: colorError,
+              ),
+            ),
+            const SizedBox(height: 10),
+            // Mensaje
+            Text(
+              controller.state.responseGeneral!.mensaje,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[700],
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: 20),
+            // Botón de acción
+            ElevatedButton(
+              onPressed: () {
+                controller.resetValuesState(); // Resetea el estado
+                Navigator.of(context).pop(); // Cierra el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: colorPrincipal,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+              ),
+              child: const Text(
+                "Aceptar",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: colorBackground,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
-      actions: [
-        TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: colorPrincipal,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop(); // Cierra el diálogo
-          },
-          child: const Text(
-            'Ok',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

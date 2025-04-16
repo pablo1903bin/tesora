@@ -8,10 +8,7 @@ import '../../../data/http/http.dart';
 import 'http_request_failure.dart';
 
 mixin HttpFailureMapper {
-  T mapFailure<T>(
-      HttpFailure error,
-      T Function(HttpRequestFailure failure) failureWith
-    ){
+  T mapFailure<T>( HttpFailure error, T Function(HttpRequestFailure failure) failureWith ){
 
     if(error.exception != null){
         if(error.exception is NetworkException){
@@ -23,6 +20,16 @@ mixin HttpFailureMapper {
               (error.exception! as MMovilV1BusinessException).codigo, 
               (error.exception! as MMovilV1BusinessException).mensaje
             )
+          );
+        }
+
+        if(error.exception is NetworkExceptionApiNotFound){
+          return  failureWith(HttpRequestFailure.notFound());
+        }
+
+
+        if(error.exception is UnauthorizedException){
+          return  failureWith(HttpRequestFailure.businessError( (error.exception! as UnauthorizedException).codigo,  (error.exception! as UnauthorizedException).mensaje )
           );
         }
 

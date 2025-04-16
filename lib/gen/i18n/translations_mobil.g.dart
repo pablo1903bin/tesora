@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 98 (49 per locale)
+/// Strings: 100 (50 per locale)
 ///
-/// Built on 2025-01-24 at 21:15 UTC
+/// Built on 2025-04-11 at 05:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -234,6 +234,7 @@ class _TranslationsMobilHttpErrorsEs {
 	String get not_found => 'No encontrado';
 	String get network => 'Sin acceso a internet';
 	String get unauthorized => 'Sin autorización';
+	String get redirection => 'Conexión redirigida por la red';
 	String get unknown => 'Error desconocido';
 	String get internalError => 'Error interno del servidor';
 	String get badRequest => 'Petición invalida';
@@ -389,6 +390,7 @@ class _TranslationsMobilHttpErrorsEn implements _TranslationsMobilHttpErrorsEs {
 	@override String get not_found => 'Not found';
 	@override String get network => 'No internet access';
 	@override String get unauthorized => 'Unauthorized';
+	@override String get redirection => 'Conexión redirigida por la red';
 	@override String get unknown => 'Unknown error';
 	@override String get internalError => 'Internal server error';
 	@override String get badRequest => 'Invalid request';
@@ -475,6 +477,7 @@ extension on TranslationsCommons {
 			case 'http_errors.not_found': return 'No encontrado';
 			case 'http_errors.network': return 'Sin acceso a internet';
 			case 'http_errors.unauthorized': return 'Sin autorización';
+			case 'http_errors.redirection': return 'Conexión redirigida por la red';
 			case 'http_errors.unknown': return 'Error desconocido';
 			case 'http_errors.internalError': return 'Error interno del servidor';
 			case 'http_errors.badRequest': return 'Petición invalida';
@@ -532,6 +535,7 @@ extension on _TranslationsMobilEn {
 			case 'http_errors.not_found': return 'Not found';
 			case 'http_errors.network': return 'No internet access';
 			case 'http_errors.unauthorized': return 'Unauthorized';
+			case 'http_errors.redirection': return 'Conexión redirigida por la red';
 			case 'http_errors.unknown': return 'Unknown error';
 			case 'http_errors.internalError': return 'Internal server error';
 			case 'http_errors.badRequest': return 'Invalid request';

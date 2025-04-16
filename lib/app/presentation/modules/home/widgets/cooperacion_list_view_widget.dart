@@ -16,7 +16,6 @@ class CooperacionListView extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return ListView.builder(
-    physics: const BouncingScrollPhysics(),
     itemCount: cooperaciones.length, // Número de elementos en la lista
     itemBuilder: (context, index) {
       final cooperacion = cooperaciones[index];

@@ -5,7 +5,6 @@ import 'package:tesora/app/presentation/global/controller/validador_field_contro
 import 'package:tesora/app/presentation/modules/caja/controllers/caja_controller.dart';
 import 'package:tesora/app/presentation/modules/home/controllers/crear_coperacion_controller.dart';
 
-import '../modules/bloqueo/controllers/bloqueo_controller.dart';
 import '../modules/home/controllers/home_controller.dart';
 import '../modules/sign_in/controllers/auth_controller.dart';
 import '../modules/usuarios/controllers/usuarios_controller.dart';
@@ -38,10 +37,6 @@ mixin ControllersMixin on StatelessWidget {
 
   AuthController getAuthController(BuildContext context) {
     return Provider.of<AuthController>(context, listen: false);
-  }
-
-  BloqueoController getBloqueoController(BuildContext context) {
-    return Provider.of<BloqueoController>(context, listen: false);
   }
 
   ValidadorFieldController getValidadorFild(BuildContext context) {

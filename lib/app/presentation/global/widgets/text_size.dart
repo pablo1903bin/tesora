@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:tesora/app/presentation/global/widgets/colores.dart';
-import 'package:tesora/app/presentation/global/widgets/styles%20copy.dart';
+import 'package:tesora/app/presentation/global/widgets/styles_copy.dart';
+
 
 AutoSizeText autoSizeTextCards({Key? key, titulo = "", TextAlign align = TextAlign.center, Color color = colorPrincipal, double fontSize = 12,}) {
   return AutoSizeText(

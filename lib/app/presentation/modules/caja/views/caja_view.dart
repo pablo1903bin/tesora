@@ -59,13 +59,13 @@ class _BalancePageState extends State<CajaView> {
         colorShadow: Colors.black.withOpacity(0.6),
         textSkip: "Saltar tutorial",
         onFinish: () {
-          print("Tutorial finalizado");
+  
         },
         onClickTarget: (target) {
-          print("Target clickeado: ${target.identify}");
+     
         },
         onSkip: () {
-          print("Tutorial saltado");
+    
           return true; // Ensure a boolean value is returned
         },
       );

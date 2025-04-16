@@ -10,10 +10,9 @@ class UsuariosController extends StateNotifier<UsuariosState> {
 
   void cambiarNombre() {
     //changeState("CMENDOZA");
-    print("Usuarioactual: $state");
     notifica(state
         .copyWith(claveUsuario: "CMENDOZA", permisos: [Permiso(2, "Admin")]));
 
-    print("Usuario Nuevo: $state");
+
   }
 }

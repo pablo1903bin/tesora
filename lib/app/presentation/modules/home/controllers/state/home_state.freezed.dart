@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
+  bool? get turorialHome => throw _privateConstructorUsedError;
   double? get totalCaja => throw _privateConstructorUsedError;
   double? get ingresosTotal => throw _privateConstructorUsedError;
   double? get gastosTotal =>
@@ -41,7 +42,8 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {double? totalCaja,
+      {bool? turorialHome,
+      double? totalCaja,
       double? ingresosTotal,
       double? gastosTotal,
       int? ingresoGasto,
@@ -68,6 +70,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? turorialHome = freezed,
     Object? totalCaja = freezed,
     Object? ingresosTotal = freezed,
     Object? gastosTotal = freezed,
@@ -80,6 +83,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? mostrarTutorial = freezed,
   }) {
     return _then(_value.copyWith(
+      turorialHome: freezed == turorialHome
+          ? _value.turorialHome
+          : turorialHome // ignore: cast_nullable_to_non_nullable
+              as bool?,
       totalCaja: freezed == totalCaja
           ? _value.totalCaja
           : totalCaja // ignore: cast_nullable_to_non_nullable
@@ -146,7 +153,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double? totalCaja,
+      {bool? turorialHome,
+      double? totalCaja,
       double? ingresosTotal,
       double? gastosTotal,
       int? ingresoGasto,
@@ -172,6 +180,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? turorialHome = freezed,
     Object? totalCaja = freezed,
     Object? ingresosTotal = freezed,
     Object? gastosTotal = freezed,
@@ -184,6 +193,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? mostrarTutorial = freezed,
   }) {
     return _then(_$HomeStateImpl(
+      turorialHome: freezed == turorialHome
+          ? _value.turorialHome
+          : turorialHome // ignore: cast_nullable_to_non_nullable
+              as bool?,
       totalCaja: freezed == totalCaja
           ? _value.totalCaja
           : totalCaja // ignore: cast_nullable_to_non_nullable
@@ -232,7 +245,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 
 class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
-      {this.totalCaja = 0.0,
+      {this.turorialHome = false,
+      this.totalCaja = 0.0,
       this.ingresosTotal = 0.0,
       this.gastosTotal = 0.0,
       this.ingresoGasto = 1,
@@ -244,6 +258,9 @@ class _$HomeStateImpl implements _HomeState {
       this.mostrarTutorial = true})
       : _listaAlarmas = listaAlarmas;
 
+  @override
+  @JsonKey()
+  final bool? turorialHome;
   @override
   @JsonKey()
   final double? totalCaja;
@@ -282,7 +299,7 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(totalCaja: $totalCaja, ingresosTotal: $ingresosTotal, gastosTotal: $gastosTotal, ingresoGasto: $ingresoGasto, botonController: $botonController, level: $level, version: $version, recordatorioResponse: $recordatorioResponse, listaAlarmas: $listaAlarmas, mostrarTutorial: $mostrarTutorial)';
+    return 'HomeState(turorialHome: $turorialHome, totalCaja: $totalCaja, ingresosTotal: $ingresosTotal, gastosTotal: $gastosTotal, ingresoGasto: $ingresoGasto, botonController: $botonController, level: $level, version: $version, recordatorioResponse: $recordatorioResponse, listaAlarmas: $listaAlarmas, mostrarTutorial: $mostrarTutorial)';
   }
 
   @override
@@ -290,6 +307,8 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
+            (identical(other.turorialHome, turorialHome) ||
+                other.turorialHome == turorialHome) &&
             (identical(other.totalCaja, totalCaja) ||
                 other.totalCaja == totalCaja) &&
             (identical(other.ingresosTotal, ingresosTotal) ||
@@ -313,6 +332,7 @@ class _$HomeStateImpl implements _HomeState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      turorialHome,
       totalCaja,
       ingresosTotal,
       gastosTotal,
@@ -333,7 +353,8 @@ class _$HomeStateImpl implements _HomeState {
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-      {final double? totalCaja,
+      {final bool? turorialHome,
+      final double? totalCaja,
       final double? ingresosTotal,
       final double? gastosTotal,
       final int? ingresoGasto,
@@ -344,6 +365,8 @@ abstract class _HomeState implements HomeState {
       final List<Model>? listaAlarmas,
       final bool? mostrarTutorial}) = _$HomeStateImpl;
 
+  @override
+  bool? get turorialHome;
   @override
   double? get totalCaja;
   @override

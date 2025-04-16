@@ -10,6 +10,7 @@ import 'package:tesora/app/presentation/mixin/controllers_mixin.dart';
 import '../../../../domain/models/user.dart';
 import '../../../../domain/repositories/authentication_repository.dart';
 import '../../../routes/route_path.dart';
+import '../../home/controllers/home_controller.dart';
 
 class AppDrawer extends StatelessWidget with ControllersMixin {
   const AppDrawer({super.key});
@@ -32,7 +33,7 @@ class AppDrawer extends StatelessWidget with ControllersMixin {
         }
 
         final user = snapshot.data;
-       
+
         return Consumer<ThemeController>(
           builder: (context, themeController, child) {
             final esDark = themeController.state.isDarkMode;
@@ -154,6 +155,18 @@ class AppDrawer extends StatelessWidget with ControllersMixin {
                       context.go(RoutePath.setting);
                     },
                   ),
+                  ListTile(
+                    leading: const Icon(Icons.folder),
+                    title: autoSizeText(
+                        titulo: "Expedientes",
+                        color: esDark ? colorAlterno5 : colorAlterno2,
+                        fontSize: 18,
+                        align: TextAlign.start),
+                    onTap: () {
+                      Navigator.pop(context);
+                      context.go(RoutePath.setting);
+                    },
+                  ),
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
@@ -164,6 +177,65 @@ class AppDrawer extends StatelessWidget with ControllersMixin {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
+                        /********************************** */
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Selector<HomeController, bool>(
+                            selector: (_, controller) =>
+                                controller.state.turorialHome!,
+                            builder: (_, tutorialHome, __) {
+                              return ListTile(
+                                leading: Icon(
+                                  tutorialHome
+                                      ? Icons.check_circle
+                                      : Icons.remove_red_eye_rounded,
+                                  color: tutorialHome
+                                      ? colorAlterno4
+                                      : colorAlterno4,
+                                ),
+                                title: autoSizeText(
+                                  titulo: tutorialHome
+                                      ? 'Tutorial visto'
+                                      : 'Ver tutorial',
+                                  color: tutorialHome
+                                      ? colorAlterno2
+                                      : colorAlterno2,
+                                  fontSize: 18,
+                                  align: TextAlign.start,
+                                ),
+                                trailing: Checkbox(
+                                  value: tutorialHome,
+                                  onChanged: (value) {
+                                    // Cambiar el estado del tutorial usando el controlador
+                                    getHomeController(context)
+                                        .cambiarEstadoTutorial();
+                                    Navigator.of(context).pop();
+
+                                    // Mostrar SnackBar con mensaje de confirmación
+                                    final snackBar = SnackBar(
+                                      backgroundColor: esDark
+                                          ? colorAlterno4
+                                          : colorAlterno4,
+                                      content: Text(
+                                        value == true
+                                            ? 'El tutorial se marcará como visto.'
+                                            : 'El tutorial se marcará como no visto.',
+                                      ),
+                                      duration: const Duration(
+                                          seconds: 3), // Duración del SnackBar
+                                    );
+
+                                    // Mostrar el SnackBar en el Scaffold actual
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+
+                        //*********************************** */
                         Padding(
                           padding: const EdgeInsets.only(left: 0),
                           child: ListTile(
@@ -190,27 +262,30 @@ class AppDrawer extends StatelessWidget with ControllersMixin {
                           ),
                         ),
                         ListTile(
-                          leading:
-                              const Icon(Icons.logout, color: colorAlterno2),
-                          title: autoSizeText(
-                              titulo: "Cerrar Sesion",
-                              color: esDark ? colorAlterno5 : colorAlterno2,
-                              fontSize: 18,
-                              align: TextAlign.start),
-                          onTap: () async {
-                            Navigator.pop(context);
+                            leading:
+                                const Icon(Icons.logout, color: colorAlterno2),
+                            title: autoSizeText(
+                                titulo: "Cerrar Sesion",
+                                color: esDark ? colorAlterno5 : colorAlterno2,
+                                fontSize: 18,
+                                align: TextAlign.start),
+                            onTap: () async {
+                              // Cierra el modal inmediatamente
+                              Navigator.pop(context);
 
-                            // Obtén la instancia del repositorio de autenticación
-                            final authenticationRepository =
-                                GetIt.instance<AuthenticationRepository>();
+                              // Cierra sesión después
+                              final authenticationRepository =
+                                  GetIt.instance<AuthenticationRepository>();
+                              await authenticationRepository.signOut();
 
-                            // Llama al método signOut() para cerrar sesión
-                            await authenticationRepository.signOut();
-
-                            // Redirige al usuario a la pantalla de inicio de sesión
-                            context.go(RoutePath.loguin);
-                          },
-                        ),
+                              // Usa un Future.microtask para postergar el uso del context al siguiente ciclo
+                              Future.microtask(() {
+                                if (context.mounted) {
+                                  GoRouter.of(context)
+                                      .pushReplacement(RoutePath.loguin);
+                                }
+                              });
+                            }),
                       ],
                     ),
                   ),

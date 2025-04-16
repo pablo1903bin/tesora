@@ -33,7 +33,7 @@ class BotonCrearCoopWidget extends StatelessWidget {
                 child: BotonContinuar(
                   titulo: botonTitulo,
                   onPressed: (botonCargandoController) {
-                    print("Guardar Cooperacion...... 😎 ");
+    
                     //
                     crearCooperacionController.guardarCooperacion();
                   },

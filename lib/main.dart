@@ -11,21 +11,19 @@ import 'app/domain/singletons/setup_locator.dart';
 void main() async {
   // Inicializa la localización para el idioma español
   initializeApp();
-
   //Activar para usar lenguaje del dispositivo
   LocaleSettings.useDeviceLocale();
-  // String hostLocal = "http://192.168.100.5:8080/gateway/api";
-  String webServer = "http://66.228.52.136:8080/gateway/api";
-  // Configura GetIt al inicio
+  // String hostLocal = "http://192.168.100.5:8080/gateway/api";  
+  //String webServer = AppConfig.webServerUrl;
+
   await AppDependencies.load(
-    hostApi: webServer,
+    hostApi:  const String.fromEnvironment("HOST_API"),
     sesion: SesionState(
         const String.fromEnvironment("S_USER"),
         const String.fromEnvironment("S_SESSION_ID"),
         [const String.fromEnvironment("COOKIES")]),
-    mocEnabled: true,
+    mocEnabled: false,
   );
-
   runApp(const MmovilApp());
 }
 
@@ -35,8 +33,4 @@ Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('es_ES', null);
   tz.initializeTimeZones();
-}
-
-void appModuleFlutter() {
-  runApp(const MmovilApp());
 }
