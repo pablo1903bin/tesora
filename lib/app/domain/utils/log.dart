@@ -7,7 +7,7 @@ class Log {
   //static bool enabled = kDebugMode;
   static bool infoEnabled = false;
   static bool httpEnabled = false;
-  static bool enabled = false;
+  static bool enabled = true;
   //static bool infoEnabled = true;
   //static bool httpEnabled = false;
 

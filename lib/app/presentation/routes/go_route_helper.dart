@@ -38,16 +38,44 @@ class GoRouteHelper {
     );
   }
 
-  static GoRoute goRouteMulti(String route, Widget Function() crear,
-      List<ChangeNotifierProvider> controllers) {
-    return GoRoute(
-      name: toName(route),
-      path: route,
-      builder: (context, state) {
-        return routeControllers(crear, controllers);
-      },
-    );
-  }
+static GoRoute goRouteMulti(
+  String route,
+  Widget Function() crear,
+  List<ChangeNotifierProvider> controllers, {
+  Duration transitionDuration = const Duration(milliseconds: 500),
+  Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)? transitionsBuilder,
+}) {
+  return GoRoute(
+    name: toName(route),
+    path: route,
+    pageBuilder: (context, state) {
+      return CustomTransitionPage(
+        key: state.pageKey,
+        child: routeControllers(crear, controllers),
+        transitionDuration: transitionDuration,
+        transitionsBuilder: transitionsBuilder ??
+            (context, animation, secondaryAnimation, child) {
+              final curvedAnimation = CurvedAnimation(
+                parent: animation,
+                curve: Curves.easeInOut,
+              );
+
+              return FadeTransition(
+                opacity: curvedAnimation,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(1, 0),
+                    end: Offset.zero,
+                  ).animate(curvedAnimation),
+                  child: child,
+                ),
+              );
+            },
+      );
+    },
+  );
+}
+
 
   static MultiProvider routeControllers(
       Widget Function() crear, List<ChangeNotifierProvider> controllers) {

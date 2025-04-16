@@ -79,7 +79,7 @@ class CustomTextField extends FormField<String> {
                     ),
                     onChanged: (value) {
                       campo.didChange(value);
-                      print('Valor actual del TextField: $value');
+                
                       if (onChanged != null) {
                         onChanged(value);
                       }

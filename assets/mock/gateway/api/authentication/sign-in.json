@@ -3,7 +3,7 @@
     "m": "Operación exitosa",
     "data": {
       "id": 16,
-      "username": "sam",
+      "username": "Sammi",
       "name": "Samantha",
       "apellido": "Chispas",
       "telefono": "2224569038",
@@ -12,5 +12,4 @@
       "role": "ADMIN",
       "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJyb2xlcyI6IlJPTEVfQURNSU4iLCJ1c2VySWQiOjE2LCJleHAiOjE3MzQ3NTU5MjV9.TZBJVSiZWsiwV4LadjRWVdSoVKoq8rLFAltQK7hnuePLHufc8-9Cw2HNlqmyWiyTO_f197vb9kEVodIVIbm4kQ"
     }
-  }
-  
+}

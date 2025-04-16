@@ -1,7 +1,6 @@
 
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tesora/app/domain/models/loguin/user_loguin_response.dart';
 
 part 'mmovil_v1_response.freezed.dart';
 part 'mmovil_v1_response.g.dart';
@@ -11,8 +10,10 @@ class MmovilV1Response with _$MmovilV1Response {
 
   factory MmovilV1Response(
     @JsonKey(name: "cR") String codigo, 
-    @JsonKey(name: "m") String mensaje,
-    UserLoginResponse? data
+    @JsonKey(name: "sessionId") String? sessionID,
+    {
+      @Default("") @JsonKey(name: "m") String mensaje,
+    }
   ) = _MmovilV1Response;
 
   factory MmovilV1Response.fromJson(Map<String, dynamic> json) => _$MmovilV1ResponseFromJson(json);

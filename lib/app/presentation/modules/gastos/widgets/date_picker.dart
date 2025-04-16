@@ -8,10 +8,10 @@ class DatePicker extends StatefulWidget {
   const DatePicker({super.key, required this.cModel});
 
   @override
-  _DatePickerState createState() => _DatePickerState();
+  DatePickerState createState() => DatePickerState();
 }
 
-class _DatePickerState extends State<DatePicker> {
+class DatePickerState extends State<DatePicker> {
   String selecteDay = 'Hoy';
 
   @override

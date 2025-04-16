@@ -9,10 +9,25 @@ import 'package:tesora/app/presentation/modules/home/controllers/state/home_stat
 import '../../../../states/state_notifier.dart';
 
 class HomeController extends StateNotifier<HomeState> with RepositoriosComunes, MmovilRepositorios {
+
   HomeController(super.state);
 
-  Future<void> mostrarTutorial(bool mostrar) async {
-    notifica(state.copyWith(mostrarTutorial: mostrar));
+
+  // Verifica si debe mostrarse el tutorial
+  void tutorialVisto() async {
+    // Leer el valor desde el almacenamiento (false por defecto
+    final tutoVisto = sharedPreferencesService.hasSeenTutorialHome();
+    notifica(state.copyWith(turorialHome: tutoVisto));
+
+  }
+
+  void cambiarEstadoTutorial() {
+    // Recuperar el valor actual (por defecto es false si no está configurado)
+    final isSeenTutorial = sharedPreferencesService.hasSeenTutorialHome();
+    // Cambiar el valor al opuesto
+    sharedPreferencesService.setTutorialHomeSeen(!isSeenTutorial);
+    notifica(state.copyWith(turorialHome: !isSeenTutorial));
+
   }
 
   Future<dynamic> reloadData() async {
@@ -153,7 +168,7 @@ class HomeController extends StateNotifier<HomeState> with RepositoriosComunes, 
   }
 
   void cambioTab(int index) {
-    print("Cambio de tab.... 😎 ${state.ingresoGasto}");
+
     notifica(state.copyWith(ingresoGasto: index));
   }
 

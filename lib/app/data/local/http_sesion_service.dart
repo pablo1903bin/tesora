@@ -5,14 +5,14 @@ import '../services/device/native_services.dart';
 
 class HttpSesionService{
   SesionState _sesionState;
-  final NativeService _nativeService;
+
 
   HttpSesionService(
     {
       required SesionState sesionState,
       required NativeService nativeService
     }
-  ) : _sesionState = sesionState, _nativeService = nativeService;
+  ) : _sesionState = sesionState;
 
 
   void save(SesionState state){

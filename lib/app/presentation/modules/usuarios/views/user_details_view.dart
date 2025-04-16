@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/providers/auth/state/user_auth_state.dart';
 import '../../../global/widgets/custom_app_bar.dart';
 import '../../../mixin/controllers_mixin.dart';
 import '../../../routes/route_path.dart';
@@ -10,7 +9,7 @@ class UserDetailsScreen extends StatelessWidget with ControllersMixin {
   const UserDetailsScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    UserAuthState user = getAuthController(context).state;
+
 
     return const Scaffold(
       appBar: CustomAppBar(

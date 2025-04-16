@@ -44,7 +44,6 @@ class GastosView extends StatelessWidget {
                     ),
                     onTap: () {
                       // Acción al pulsar un gasto
-                      print('Gasto seleccionado: ${gastos[index]}');
                     },
                   ),
                 );

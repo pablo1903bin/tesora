@@ -1,8 +1,10 @@
 // custom_app_bar.dart
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tesora/app/presentation/global/widgets/colores.dart';
 import 'package:tesora/app/presentation/global/widgets/text_size.dart';
+import 'package:tesora/app/presentation/routes/route_path.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -14,14 +16,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Construir el AppBar...");
     return AppBar(
-      title: autoSizeTextCards(titulo:title, fontSize: 24, align: TextAlign.start),
-      backgroundColor: colorSueve,
+      title: autoSizeTextCards(titulo:title, fontSize: 24, align: TextAlign.start, color: colorSueve),
+      backgroundColor: colorPrincipal,
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(Icons.menu),
-          color: colorPrincipal,
+          color: colorSueve,
           onPressed: () {
             Scaffold.of(context).openDrawer(); // Abre el Drawer
           },
@@ -29,34 +30,31 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          color: colorPrincipal,
+          color: colorSueve,
           icon: const Icon(Icons.notifications),
           onPressed: () {
-            print('Notificaciones presionadas');
+     
           },
         ),
         IconButton(
-          color: colorPrincipal,
+          color: colorSueve,
           icon: const Icon(Icons.qr_code),
           onPressed: () {
-            print('Search presionadas');
+    
           },
         ),
         IconButton(
           key: cajaTotalDisponible,
-          color: colorPrincipal,
+          color: colorSueve,
           icon: const Icon(Icons.group),
           onPressed: () {
-            print('Grupo presionado');
+                  
+                      context.go(RoutePath.dialog);
           },
         ),
       ],
       elevation: 0.0,
       centerTitle: true,
     );
-  }
-
-  String _formatTitle(String title) {
-    return title.replaceAll('/', ' '); // Elimina el prefijo `/`
   }
 }

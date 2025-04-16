@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:tesora/app/data/local/secure_storage_service.dart';
+import 'package:tesora/app/data/local/shared_preferences_service.dart';
 import 'package:tesora/app/domain/repositories/cooperacion_repository.dart';
 
 import '../../domain/repositories/conectivity_repository.dart';
@@ -22,7 +24,14 @@ mixin RepositoriosComunes {
   SesionRepository get sesionRepository {
     return GetIt.instance<SesionRepository>();
   }
-  //
 
 
+  SecureStorageService get secureStorageService {
+    return GetIt.instance<SecureStorageService>();
+  }
+
+
+  SharedPreferencesService get sharedPreferencesService {
+    return GetIt.instance<SharedPreferencesService>();
+  }
 }

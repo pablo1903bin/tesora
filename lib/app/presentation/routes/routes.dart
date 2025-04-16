@@ -4,12 +4,10 @@ import 'package:tesora/app/presentation/routes/caja/caja_routes.dart';
 import 'package:tesora/app/presentation/routes/cooperacion/cooperacion_routes.dart';
 import 'package:tesora/app/presentation/routes/gastos/gasto_routes.dart';
 import 'package:tesora/app/presentation/routes/settings/setting_route.dart';
-import 'package:tesora/app/presentation/routes/text_scann/text_route.dart';
 
 import '../modules/usuarios/controllers/state/usuarios_state.dart';
 import '../modules/usuarios/controllers/usuarios_controller.dart';
 import '../modules/usuarios/views/usuarios_view.dart';
-import 'bloqueo/cuenta_bloqueo_routes.dart';
 import 'go_route_helper.dart';
 import 'home/home_routes.dart';
 import 'loguin/loguin_routes.dart';
@@ -27,6 +25,7 @@ mixin Routes {
       LoguinRoutes.loguin,
       HomeRoutes.home,
 
+
       CooperacionRoutes.crearCooperacion,
       CooperacionRoutes.coperaciones,
           CooperacionRoutes.coperacionDetalle,
@@ -39,8 +38,6 @@ mixin Routes {
 
       SettingRoute.settings,
       CajaRoutes.caja,
-      CuentaBloqueoRoutes.bloqueo,
-      TextRoute.text,
       GoRouteHelper.goRoute<UsuariosController>(
         RoutePath.listarUsuarios,
         () => const UsuariosView(),
