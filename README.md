@@ -44,6 +44,17 @@ Este proyecto es un punto de partida para el desarrollo de aplicaciones móviles
 Desarrollado con ❤️ por **Pablo Rosas**  
 🔗 [GitHub - @pablo1903bin](https://github.com/pablo1903bin)
 
+---
+
+## 📸 Capturas de pantalla
+
+### 🏠 Pantalla de inicio
+
+![Pantalla de inicio](assets/screenshots/home.png)
+
+### 🔐 Pantalla de login
+
+![Pantalla de login](assets/screenshots/login.png)
 
 ---
 
