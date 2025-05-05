@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:tesora/app/data/repositories_impl/native_repository_impl.dart';
 import 'package:tesora/firebase_options.dart';
 import 'package:tesora/gen/i18n/translations_mobil.g.dart';
 import 'package:tesora/mmovil_app.dart';
@@ -41,7 +42,7 @@ Future<void> initializeApp() async {
   // 📆 Localización y zonas horarias
   await initializeDateFormatting('es_ES', null);
   tz.initializeTimeZones();
-
+  NativeRepositoryImpl.initNotifications();
   // 🚀 Inicializa Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
