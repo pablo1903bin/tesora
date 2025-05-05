@@ -26,6 +26,7 @@ class NativeRepositoryImpl implements NativeRepository {
 
 
    static Future<void> initNotifications() async {
+    
 
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
