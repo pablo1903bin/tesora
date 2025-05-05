@@ -4,6 +4,8 @@ import '../../domain/repositories/conectivity_repository.dart';
 import '../services/device/internet_checker.dart';
 
 class ConectivityRepositoryImpl implements ConectivityRepository {
+
+  
   final Connectivity _connectivity;
   final InternetChecker _internetChecker;
 

@@ -18,7 +18,7 @@ class BaseHttpMovil extends Http {
   @override
   Uri getUrl(String uri) {
     final completeUrl = Uri.parse("$_hostApi$uri");
-    print("[getUrl] URL generada: $completeUrl"); // Log de la URL generada
+
     return completeUrl;
   }
 
@@ -39,8 +39,7 @@ class BaseHttpMovil extends Http {
         "Cookie": _httpSesionService.sesion.cookies.join("; "),
       };
     }
-    print(
-        "[addHeaders] Encabezados finales: $updatedHeaders"); // Log de los encabezados generados
+// Log de los encabezados generados
     return updatedHeaders;
   }
 
@@ -49,15 +48,13 @@ class BaseHttpMovil extends Http {
       "Content-Type": "application/x-www-form-urlencoded",
       "Accept": "application/json",
     };
-    print(
-        "[getDefaulPostHeaders] Encabezados por defecto: $headers"); // Log de encabezados por defecto
+
     return headers;
   }
 
   String _getPayload(bool jsonPost, Map<String, dynamic> body) {
     final payload = jsonPost ? jsonEncode(body) : mapToQueryString(body);
-    print(
-        "[_getPayload] Payload generado: $payload"); // Log del payload generado
+
     return payload;
   }
 
@@ -71,7 +68,7 @@ class BaseHttpMovil extends Http {
     String? jsonKey,
     bool jsonPost = false,
   }) async {
-    print("[request] Iniciando solicitud con URI: $uri"); // Inicio del método
+    print("Request: $uri");
     try {
       final response = await super.requestBody(
         uri,
@@ -88,15 +85,12 @@ class BaseHttpMovil extends Http {
           try {
             return exito<R>(procesaExito, jsonKey, body);
           } catch (e) {
-            print(
-                "[request] Error durante la deserialización: $e"); // Log de error en deserialización
+
             return Respuesta.error(HttpFailure(statusCode: -1, exception: e));
           }
         },
       );
     } catch (e) {
-      print(
-          "[request] Excepción durante la solicitud: $e"); // Log de excepciones generales
       return Respuesta.error(HttpFailure(statusCode: -1, exception: e));
     }
   }
@@ -106,7 +100,7 @@ class BaseHttpMovil extends Http {
     String? jsonKey,
     String body,
   ) {
-    print("[exito] Procesando éxito con body: $body"); // Log al procesar una respuesta exitosa
+
     if (procesaExito != null) {
       return Respuesta.exito(procesaExito(body));
     }
@@ -117,14 +111,14 @@ class BaseHttpMovil extends Http {
   }
 
   Respuesta<HttpFailure, R> _onExito<R>(String body, String key) {
-  print( "[_onExito] Extrayendo clave: $key del body: $body"); // Log del procesamiento por clave
+
     return Respuesta.exito(getKeyFromJson(body, key));
   }
 
   R getKeyFromJson<R>(String body, String key) {
     final json = jsonDecode(body);
     final extractedValue = json[key];
-   // print("[getKeyFromJson] Valor extraído para clave '$key': $extractedValue"); // Log del valor extraído
+
     return extractedValue;
   }
 
@@ -134,12 +128,12 @@ class BaseHttpMovil extends Http {
       final value = Uri.encodeComponent(entry.value.toString());
       return '$key=$value';
     }).join('&');
-    //print("[mapToQueryString] Query string generada: $queryString"); // Log del query string generado
+
     return queryString;
   }
 
   HttpSesionService get sessionService {
-   // print( "[sessionService] Obteniendo servicio de sesión"); // Log al acceder al servicio de sesión
+
     return _httpSesionService;
   }
 }

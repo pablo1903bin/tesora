@@ -26,6 +26,7 @@ mixin _$HttpRequestFailure {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$HttpRequestFailure {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$HttpRequestFailure {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$HttpRequestFailure {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$HttpRequestFailure {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$HttpRequestFailure {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +162,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return notFound();
   }
@@ -171,6 +178,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return notFound?.call();
   }
@@ -186,6 +194,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -205,6 +214,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return notFound(this);
   }
@@ -220,6 +230,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return notFound?.call(this);
   }
@@ -235,6 +246,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -294,6 +306,7 @@ class _$NetworkImpl implements _Network {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return network();
   }
@@ -309,6 +322,7 @@ class _$NetworkImpl implements _Network {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return network?.call();
   }
@@ -324,6 +338,7 @@ class _$NetworkImpl implements _Network {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -343,6 +358,7 @@ class _$NetworkImpl implements _Network {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return network(this);
   }
@@ -358,6 +374,7 @@ class _$NetworkImpl implements _Network {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return network?.call(this);
   }
@@ -373,6 +390,7 @@ class _$NetworkImpl implements _Network {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -432,6 +450,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return unauthorized();
   }
@@ -447,6 +466,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return unauthorized?.call();
   }
@@ -462,6 +482,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -481,6 +502,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return unauthorized(this);
   }
@@ -496,6 +518,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return unauthorized?.call(this);
   }
@@ -511,6 +534,7 @@ class _$UnauthorizedImpl implements _Unauthorized {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -570,6 +594,7 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return unknown();
   }
@@ -585,6 +610,7 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return unknown?.call();
   }
@@ -600,6 +626,7 @@ class _$UnknownImpl implements _Unknown {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -619,6 +646,7 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return unknown(this);
   }
@@ -634,6 +662,7 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return unknown?.call(this);
   }
@@ -649,6 +678,7 @@ class _$UnknownImpl implements _Unknown {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -708,6 +738,7 @@ class _$InternalErrorImpl implements _InternalError {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return internalError();
   }
@@ -723,6 +754,7 @@ class _$InternalErrorImpl implements _InternalError {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return internalError?.call();
   }
@@ -738,6 +770,7 @@ class _$InternalErrorImpl implements _InternalError {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (internalError != null) {
@@ -757,6 +790,7 @@ class _$InternalErrorImpl implements _InternalError {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return internalError(this);
   }
@@ -772,6 +806,7 @@ class _$InternalErrorImpl implements _InternalError {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return internalError?.call(this);
   }
@@ -787,6 +822,7 @@ class _$InternalErrorImpl implements _InternalError {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (internalError != null) {
@@ -846,6 +882,7 @@ class _$BadRequestImpl implements _BadRequest {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return badRequest();
   }
@@ -861,6 +898,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return badRequest?.call();
   }
@@ -876,6 +914,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -895,6 +934,7 @@ class _$BadRequestImpl implements _BadRequest {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return badRequest(this);
   }
@@ -910,6 +950,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return badRequest?.call(this);
   }
@@ -925,6 +966,7 @@ class _$BadRequestImpl implements _BadRequest {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -981,6 +1023,7 @@ class _$CustomFailureImpl implements _CustomFailure {
 
   @override
   final int codigo;
+// Código de error HTTP.
   @override
   final String mensaje;
 
@@ -1018,6 +1061,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return custom(codigo, mensaje);
   }
@@ -1033,6 +1077,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return custom?.call(codigo, mensaje);
   }
@@ -1048,6 +1093,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (custom != null) {
@@ -1067,6 +1113,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return custom(this);
   }
@@ -1082,6 +1129,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return custom?.call(this);
   }
@@ -1097,6 +1145,7 @@ class _$CustomFailureImpl implements _CustomFailure {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (custom != null) {
@@ -1110,7 +1159,7 @@ abstract class _CustomFailure implements HttpRequestFailure {
   factory _CustomFailure(final int codigo, final String mensaje) =
       _$CustomFailureImpl;
 
-  int get codigo;
+  int get codigo; // Código de error HTTP.
   String get mensaje;
   @JsonKey(ignore: true)
   _$$CustomFailureImplCopyWith<_$CustomFailureImpl> get copyWith =>
@@ -1160,6 +1209,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
 
   @override
   final String codigo;
+// Código de error propio de la lógica de negocio.
   @override
   final String mensaje;
 
@@ -1197,6 +1247,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     required TResult Function() badRequest,
     required TResult Function(int codigo, String mensaje) custom,
     required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
   }) {
     return businessError(codigo, mensaje);
   }
@@ -1212,6 +1263,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     TResult? Function()? badRequest,
     TResult? Function(int codigo, String mensaje)? custom,
     TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
   }) {
     return businessError?.call(codigo, mensaje);
   }
@@ -1227,6 +1279,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     TResult Function()? badRequest,
     TResult Function(int codigo, String mensaje)? custom,
     TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
     required TResult orElse(),
   }) {
     if (businessError != null) {
@@ -1246,6 +1299,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     required TResult Function(_BadRequest value) badRequest,
     required TResult Function(_CustomFailure value) custom,
     required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
   }) {
     return businessError(this);
   }
@@ -1261,6 +1315,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     TResult? Function(_BadRequest value)? badRequest,
     TResult? Function(_CustomFailure value)? custom,
     TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
   }) {
     return businessError?.call(this);
   }
@@ -1276,6 +1331,7 @@ class _$MMovilFailureImpl implements _MMovilFailure {
     TResult Function(_BadRequest value)? badRequest,
     TResult Function(_CustomFailure value)? custom,
     TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
     required TResult orElse(),
   }) {
     if (businessError != null) {
@@ -1289,9 +1345,153 @@ abstract class _MMovilFailure implements HttpRequestFailure {
   factory _MMovilFailure(final String codigo, final String mensaje) =
       _$MMovilFailureImpl;
 
-  String get codigo;
+  String get codigo; // Código de error propio de la lógica de negocio.
   String get mensaje;
   @JsonKey(ignore: true)
   _$$MMovilFailureImplCopyWith<_$MMovilFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RedirectionFailureImplCopyWith<$Res> {
+  factory _$$RedirectionFailureImplCopyWith(_$RedirectionFailureImpl value,
+          $Res Function(_$RedirectionFailureImpl) then) =
+      __$$RedirectionFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RedirectionFailureImplCopyWithImpl<$Res>
+    extends _$HttpRequestFailureCopyWithImpl<$Res, _$RedirectionFailureImpl>
+    implements _$$RedirectionFailureImplCopyWith<$Res> {
+  __$$RedirectionFailureImplCopyWithImpl(_$RedirectionFailureImpl _value,
+      $Res Function(_$RedirectionFailureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RedirectionFailureImpl implements _RedirectionFailure {
+  _$RedirectionFailureImpl();
+
+  @override
+  String toString() {
+    return 'HttpRequestFailure.redirection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RedirectionFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() network,
+    required TResult Function() unauthorized,
+    required TResult Function() unknown,
+    required TResult Function() internalError,
+    required TResult Function() badRequest,
+    required TResult Function(int codigo, String mensaje) custom,
+    required TResult Function(String codigo, String mensaje) businessError,
+    required TResult Function() redirection,
+  }) {
+    return redirection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? network,
+    TResult? Function()? unauthorized,
+    TResult? Function()? unknown,
+    TResult? Function()? internalError,
+    TResult? Function()? badRequest,
+    TResult? Function(int codigo, String mensaje)? custom,
+    TResult? Function(String codigo, String mensaje)? businessError,
+    TResult? Function()? redirection,
+  }) {
+    return redirection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? network,
+    TResult Function()? unauthorized,
+    TResult Function()? unknown,
+    TResult Function()? internalError,
+    TResult Function()? badRequest,
+    TResult Function(int codigo, String mensaje)? custom,
+    TResult Function(String codigo, String mensaje)? businessError,
+    TResult Function()? redirection,
+    required TResult orElse(),
+  }) {
+    if (redirection != null) {
+      return redirection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_Network value) network,
+    required TResult Function(_Unauthorized value) unauthorized,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InternalError value) internalError,
+    required TResult Function(_BadRequest value) badRequest,
+    required TResult Function(_CustomFailure value) custom,
+    required TResult Function(_MMovilFailure value) businessError,
+    required TResult Function(_RedirectionFailure value) redirection,
+  }) {
+    return redirection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotFound value)? notFound,
+    TResult? Function(_Network value)? network,
+    TResult? Function(_Unauthorized value)? unauthorized,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InternalError value)? internalError,
+    TResult? Function(_BadRequest value)? badRequest,
+    TResult? Function(_CustomFailure value)? custom,
+    TResult? Function(_MMovilFailure value)? businessError,
+    TResult? Function(_RedirectionFailure value)? redirection,
+  }) {
+    return redirection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_Network value)? network,
+    TResult Function(_Unauthorized value)? unauthorized,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InternalError value)? internalError,
+    TResult Function(_BadRequest value)? badRequest,
+    TResult Function(_CustomFailure value)? custom,
+    TResult Function(_MMovilFailure value)? businessError,
+    TResult Function(_RedirectionFailure value)? redirection,
+    required TResult orElse(),
+  }) {
+    if (redirection != null) {
+      return redirection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RedirectionFailure implements HttpRequestFailure {
+  factory _RedirectionFailure() = _$RedirectionFailureImpl;
 }

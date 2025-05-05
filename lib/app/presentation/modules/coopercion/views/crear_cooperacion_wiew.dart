@@ -48,8 +48,7 @@ class CrearCooperacionWiew extends StatelessWidget with ControllersMixin {
               NombreField(
                   controller: nombreController, // Remueve el controlador
                   onChanged: (value) {
-                    print(
-                        "Texto ingresado: $value"); // Lógica a ejecutar al cambiar
+                // Lógica a ejecutar al cambiar
                     crearCoperacionController.actualizarNombre(value!);
                   }),
               const SizedBox(height: 12),

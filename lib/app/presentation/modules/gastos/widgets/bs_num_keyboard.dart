@@ -6,10 +6,10 @@ class BSNumKeyboard extends StatefulWidget {
   const BSNumKeyboard({super.key, required CombinedModel cModel});
 
   @override
-  _BSNumKeyboardState createState() => _BSNumKeyboardState();
+  BSNumKeyboardState createState() => BSNumKeyboardState();
 }
 
-class _BSNumKeyboardState extends State<BSNumKeyboard> {
+class BSNumKeyboardState extends State<BSNumKeyboard> {
   String import = '0.00'; // Variable que almacena la cantidad ingresada
 
   @override

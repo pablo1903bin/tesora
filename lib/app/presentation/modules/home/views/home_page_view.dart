@@ -23,29 +23,42 @@ import '../../../mixin/controllers_mixin.dart';
 import '../../../mixin/mixin_repositorios_comunes.dart';
 import '../../menu/views/drawer_widget.dart';
 
-class HomePageView extends StatelessWidget
-    with ControllersMixin, RepositoriosComunes, I18NMixin {
+class HomePageView extends StatelessWidget with ControllersMixin, RepositoriosComunes, I18NMixin {
   const HomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print("Construir el widget inicial...");
     final themeController = getThemeController(context);
     // Definimos las GlobalKeys
     final GlobalKey cajaTotalDisponible = GlobalKey();
     final GlobalKey cajaTotalActual = GlobalKey();
 
     List<TargetFocus> targets = [];
-    _createTargets(targets, cajaTotalDisponible, cajaTotalActual,
-        getHomeController(context)); // Crea los objetivos del tutorial.
+    _createTargets(targets, cajaTotalDisponible, cajaTotalActual, getHomeController(context)); // Crea los objetivos del tutorial.
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      print("Despues de construir todos los widgets mostrar esto...");
-
-      print("Despues esto...");
-      _showTutorial(targets,
-          context); // Muestra el tutorial después de garantizar que todo esté listo.
+      final homeController = getHomeController(context);
+       homeController.tutorialVisto();
+      final tutorial = homeController.state.turorialHome!;
+      if (!tutorial) {
+        _showTutorial(targets, context);
+      }
+/*
+  Selector<HomeController, bool>(
+    selector: (_, controller) => controller.state.turorialHome!,
+    builder: (_, tutorialHome, __) {
+      // Reaccionar al cambio en tutorialHome
+      if (tutorialHome) {
+        print("mostrar el tutorial");
+        homeController.tutorialVisto();
+        _showTutorial(targets, context);
+      }
+      return const SizedBox.shrink(); // No necesita construir un widget visual
+    },
+  );
+  */
     });
+
     return Scaffold(
       backgroundColor: colorSueve,
       appBar: CustomAppBar(
@@ -61,16 +74,14 @@ class HomePageView extends StatelessWidget
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          child: _getBody(context, cajaTotalActual, themeController,
-              getHomeController(context)),
+          child: _getBody(context, cajaTotalActual, themeController, getHomeController(context)),
         ),
       ),
       floatingActionButton: const CustomFAB(),
     );
   }
 
-  Widget _getBody(BuildContext context, GlobalKey cajaTotalActual,
-      ThemeController themeController, HomeController homeController) {
+  Widget _getBody(BuildContext context, GlobalKey cajaTotalActual, ThemeController themeController, HomeController homeController) {
     //double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, left: 16, right: 16),
@@ -236,12 +247,12 @@ class HomePageView extends StatelessWidget
                               // Construye la lista de FlayerSkin cuando hay datos
                               final gastos = snapshot.data!;
                               return SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
+                                
                                 child: Column(
                                   children: gastos.map((gasto) {
                                     return GestureDetector(
                                       onTap: () {
-                                        print("Ir a este Gasto.... ");
+                                    
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(
@@ -420,7 +431,7 @@ class HomePageView extends StatelessWidget
 
   void _showTutorial(List<TargetFocus> targets, BuildContext context) {
     late TutorialCoachMark tutorialCoachMark;
-    Future.delayed(const Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 400), () {
       tutorialCoachMark = TutorialCoachMark(
         targets: targets,
         colorShadow: const Color.fromARGB(255, 154, 3, 3).withOpacity(0.3),
@@ -430,18 +441,18 @@ class HomePageView extends StatelessWidget
         alignSkip: Alignment.bottomRight,
         showSkipInLastTarget: false,
         onClickTarget: (target) {
-          print("Target clickeado: ${target.identify}");
+   
         },
         onClickOverlay: (target) {
-          print("Click en la sombra...");
+         
         },
         onSkip: () {
-          print("Tutorial saltado");
+  
           return true; // Ensure a boolean value is returned
         },
         imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         onFinish: () {
-          print("Tutorial finalizado");
+     
         },
       );
 
@@ -452,10 +463,8 @@ class HomePageView extends StatelessWidget
 }
 
 void _createTargets(List<TargetFocus> targets, GlobalKey cajaTotalDisponible,
-    GlobalKey cajaTotalActual, HomeController homeController) {
-  final isChecked = homeController
-      .state.mostrarTutorial; // Muestra el tutorial al cargar la página
-  print("Mostrar tutorial: $isChecked");
+    GlobalKey cajaTotalActual, HomeController homeController) async {
+  // Variable para manejar el estado del checkbox localmente
   bool noMostrarTutorial = false;
 
   targets.add(TargetFocus(
@@ -553,9 +562,8 @@ void _createTargets(List<TargetFocus> targets, GlobalKey cajaTotalDisponible,
               Row(
                 children: <Widget>[
                   Checkbox(
-                    value: isChecked,
+                    value: noMostrarTutorial,
                     onChanged: (value) {
-                      noMostrarTutorial = value ?? false;
                       // Esto asegura que se reconstruya el widget
                       (context as Element).markNeedsBuild();
                     },
@@ -573,7 +581,7 @@ void _createTargets(List<TargetFocus> targets, GlobalKey cajaTotalDisponible,
                   ElevatedButton(
                     onPressed: () {
                       controller.skip(); // Finaliza el tutorial
-                      print("Tutorial finalizado por el usuario");
+               
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue, // Cambia el color de fondo

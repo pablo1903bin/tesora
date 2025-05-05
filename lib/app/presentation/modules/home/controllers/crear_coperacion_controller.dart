@@ -1,4 +1,6 @@
-import 'package:tesora/app/domain/failures/http_failure_unwrap.dart';
+
+
+
 import 'package:tesora/app/domain/models/cooperacion/crear_cooperacion_dto.dart';
 import 'package:tesora/app/presentation/global/controller/boton_cargando_controller.dart';
 import 'package:tesora/app/presentation/mixin/i18n_mixin.dart';
@@ -7,17 +9,13 @@ import 'package:tesora/app/presentation/mixin/mmovil_repositorios.dart';
 import 'package:tesora/app/presentation/modules/home/controllers/state/crear_cooperacion_state.dart';
 import 'package:tesora/app/states/state_notifier.dart';
 
+import '../../../failures/http_failure_unwrap.dart';
+
 class CrearCoperacionController extends StateNotifier<CrearCooperacionState>
     with MmovilRepositorios, HttpFailureUnwrap, I18NMixin, RepositoriosComunes {
   CrearCoperacionController(super.state);
 
   Future<bool> guardarCooperacion() async {
-    print("${state.nombre}");
-    print("${state.fechaInicio}");
-    print("${state.fechaFin}");
-    print("${state.descripcion}");
-    print("${state.montoObjetivo}");
-    print("${state.numeroCuenta}");
     _loading(true); // Simula inicio del loading
 
     final dto = CrearCooperacionDto(
@@ -39,18 +37,15 @@ class CrearCoperacionController extends StateNotifier<CrearCooperacionState>
       idCategoria: 1,
     );
 
-    // Imprime el JSON para verificarlo
-    print(dto.toJson());
     final response = await coperacionRepository.guardarCooperacion(dto);
 
     return response.when(
       exito: (data) {
-        print("Éxito: Cooperación creada correctamente. ${data.toString()}");
         _loading(false);
         return true;
       },
       error: (failure) {
-        print("Error al guardar la cooperación: $failure");
+
         _loading(false);
         return false;
       },

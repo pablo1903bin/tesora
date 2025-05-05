@@ -35,7 +35,7 @@ class CooperacionesView extends StatelessWidget {
               subtitle: const Text("Detalles de la cooperación"),
               onTap: () {
                 // Acción al tocar una cooperación
-                print("Seleccionado: ${cooperaciones[index]}");
+      
               },
             ),
           );

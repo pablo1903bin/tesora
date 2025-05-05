@@ -8,6 +8,7 @@ part 'home_state.freezed.dart';
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState({
+    @Default(false) bool? turorialHome,
     @Default(0.0) double? totalCaja,
     @Default(0.0) double? ingresosTotal,
     @Default(0.0) double? gastosTotal,

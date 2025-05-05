@@ -14,7 +14,7 @@ class OfflineRoute {
         return OfflineView(
           onRetry: onRetry ??
               () {
-                print("No se proporcionó ninguna función de reintento");
+        
               },
         );
       },

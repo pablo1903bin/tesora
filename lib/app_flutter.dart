@@ -12,13 +12,12 @@ class AppFlutterModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const platform = MethodChannel('pablo_app/channel');
+    const platform = MethodChannel('mobil/channel');
     return ProvedorGlobal(
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider<NativeChannelController>(
-            create: (context) =>
-                NativeChannelController(NativeChannelState(platform: platform)),
+            create: (context) => NativeChannelController(NativeChannelState(platform: platform)),
           ),
         ],
         child: MyApp(),

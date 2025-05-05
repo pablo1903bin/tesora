@@ -21,7 +21,6 @@ class CooperacionApi {
   Future<Respuesta<HttpFailure, CooperacionResponse>> crearCooperacion({
     required Map<String, dynamic> cooperacionData,
   }) async {
-    print("Datos de cooperación: $cooperacionData");
     return await _http.request<CooperacionResponse>(
       "/cooperacion/crear",
       method: HttpMethod.post,

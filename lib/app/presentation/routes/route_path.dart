@@ -30,6 +30,8 @@ class RoutePath {
   static const textScann = "/escanear/texto";
   static const cambioPass = "/seguridad/password";
 
+  static const dialog = "/usuarios/dialog";
+
 //  SOlucionar  esto
   static const inicial = splash;
 }

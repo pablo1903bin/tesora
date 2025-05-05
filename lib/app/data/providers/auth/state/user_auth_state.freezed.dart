@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserAuthState {
   UserLoginResponse? get userResponse => throw _privateConstructorUsedError;
+  RegisterResponse? get registerResponse => throw _privateConstructorUsedError;
+  MmovilV1Response? get responseGeneral => throw _privateConstructorUsedError;
   String? get codigo => throw _privateConstructorUsedError;
   LoadingIndicatorController? get loadingIndicatorController =>
       throw _privateConstructorUsedError;
@@ -34,10 +36,13 @@ abstract class $UserAuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {UserLoginResponse? userResponse,
+      RegisterResponse? registerResponse,
+      MmovilV1Response? responseGeneral,
       String? codigo,
       LoadingIndicatorController? loadingIndicatorController});
 
   $UserLoginResponseCopyWith<$Res>? get userResponse;
+  $MmovilV1ResponseCopyWith<$Res>? get responseGeneral;
 }
 
 /// @nodoc
@@ -54,6 +59,8 @@ class _$UserAuthStateCopyWithImpl<$Res, $Val extends UserAuthState>
   @override
   $Res call({
     Object? userResponse = freezed,
+    Object? registerResponse = freezed,
+    Object? responseGeneral = freezed,
     Object? codigo = freezed,
     Object? loadingIndicatorController = freezed,
   }) {
@@ -62,6 +69,14 @@ class _$UserAuthStateCopyWithImpl<$Res, $Val extends UserAuthState>
           ? _value.userResponse
           : userResponse // ignore: cast_nullable_to_non_nullable
               as UserLoginResponse?,
+      registerResponse: freezed == registerResponse
+          ? _value.registerResponse
+          : registerResponse // ignore: cast_nullable_to_non_nullable
+              as RegisterResponse?,
+      responseGeneral: freezed == responseGeneral
+          ? _value.responseGeneral
+          : responseGeneral // ignore: cast_nullable_to_non_nullable
+              as MmovilV1Response?,
       codigo: freezed == codigo
           ? _value.codigo
           : codigo // ignore: cast_nullable_to_non_nullable
@@ -84,6 +99,18 @@ class _$UserAuthStateCopyWithImpl<$Res, $Val extends UserAuthState>
       return _then(_value.copyWith(userResponse: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MmovilV1ResponseCopyWith<$Res>? get responseGeneral {
+    if (_value.responseGeneral == null) {
+      return null;
+    }
+
+    return $MmovilV1ResponseCopyWith<$Res>(_value.responseGeneral!, (value) {
+      return _then(_value.copyWith(responseGeneral: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -96,11 +123,15 @@ abstract class _$$UserAuthStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {UserLoginResponse? userResponse,
+      RegisterResponse? registerResponse,
+      MmovilV1Response? responseGeneral,
       String? codigo,
       LoadingIndicatorController? loadingIndicatorController});
 
   @override
   $UserLoginResponseCopyWith<$Res>? get userResponse;
+  @override
+  $MmovilV1ResponseCopyWith<$Res>? get responseGeneral;
 }
 
 /// @nodoc
@@ -115,6 +146,8 @@ class __$$UserAuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userResponse = freezed,
+    Object? registerResponse = freezed,
+    Object? responseGeneral = freezed,
     Object? codigo = freezed,
     Object? loadingIndicatorController = freezed,
   }) {
@@ -123,6 +156,14 @@ class __$$UserAuthStateImplCopyWithImpl<$Res>
           ? _value.userResponse
           : userResponse // ignore: cast_nullable_to_non_nullable
               as UserLoginResponse?,
+      registerResponse: freezed == registerResponse
+          ? _value.registerResponse
+          : registerResponse // ignore: cast_nullable_to_non_nullable
+              as RegisterResponse?,
+      responseGeneral: freezed == responseGeneral
+          ? _value.responseGeneral
+          : responseGeneral // ignore: cast_nullable_to_non_nullable
+              as MmovilV1Response?,
       codigo: freezed == codigo
           ? _value.codigo
           : codigo // ignore: cast_nullable_to_non_nullable
@@ -139,10 +180,18 @@ class __$$UserAuthStateImplCopyWithImpl<$Res>
 
 class _$UserAuthStateImpl implements _UserAuthState {
   _$UserAuthStateImpl(
-      {this.userResponse, this.codigo = null, this.loadingIndicatorController});
+      {this.userResponse,
+      this.registerResponse,
+      this.responseGeneral,
+      this.codigo = null,
+      this.loadingIndicatorController});
 
   @override
   final UserLoginResponse? userResponse;
+  @override
+  final RegisterResponse? registerResponse;
+  @override
+  final MmovilV1Response? responseGeneral;
   @override
   @JsonKey()
   final String? codigo;
@@ -151,7 +200,7 @@ class _$UserAuthStateImpl implements _UserAuthState {
 
   @override
   String toString() {
-    return 'UserAuthState(userResponse: $userResponse, codigo: $codigo, loadingIndicatorController: $loadingIndicatorController)';
+    return 'UserAuthState(userResponse: $userResponse, registerResponse: $registerResponse, responseGeneral: $responseGeneral, codigo: $codigo, loadingIndicatorController: $loadingIndicatorController)';
   }
 
   @override
@@ -161,6 +210,10 @@ class _$UserAuthStateImpl implements _UserAuthState {
             other is _$UserAuthStateImpl &&
             (identical(other.userResponse, userResponse) ||
                 other.userResponse == userResponse) &&
+            (identical(other.registerResponse, registerResponse) ||
+                other.registerResponse == registerResponse) &&
+            (identical(other.responseGeneral, responseGeneral) ||
+                other.responseGeneral == responseGeneral) &&
             (identical(other.codigo, codigo) || other.codigo == codigo) &&
             (identical(other.loadingIndicatorController,
                     loadingIndicatorController) ||
@@ -169,8 +222,8 @@ class _$UserAuthStateImpl implements _UserAuthState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userResponse, codigo, loadingIndicatorController);
+  int get hashCode => Object.hash(runtimeType, userResponse, registerResponse,
+      responseGeneral, codigo, loadingIndicatorController);
 
   @JsonKey(ignore: true)
   @override
@@ -182,12 +235,18 @@ class _$UserAuthStateImpl implements _UserAuthState {
 abstract class _UserAuthState implements UserAuthState {
   factory _UserAuthState(
           {final UserLoginResponse? userResponse,
+          final RegisterResponse? registerResponse,
+          final MmovilV1Response? responseGeneral,
           final String? codigo,
           final LoadingIndicatorController? loadingIndicatorController}) =
       _$UserAuthStateImpl;
 
   @override
   UserLoginResponse? get userResponse;
+  @override
+  RegisterResponse? get registerResponse;
+  @override
+  MmovilV1Response? get responseGeneral;
   @override
   String? get codigo;
   @override

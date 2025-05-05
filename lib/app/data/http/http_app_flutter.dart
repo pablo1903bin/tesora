@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:tesora/app/domain/utils/log.dart';
+
 import '../../domain/functional/respuesta.dart';
 import 'http.dart';
 
@@ -37,64 +39,48 @@ class HttpAppFlutter extends Http {
     return Uri.parse("$_hostApi$uri");
   }
 
-Future<Respuesta<HttpFailure, R>> request<R>(String uri,
-    {HttpMethod method = HttpMethod.get,
-    Map<String, String> headers = const {},
-    Map<String, String> params = const {},
-    Map<String, dynamic> body = const {},
-    R Function(String)? procesaExito}) async {
-  print("Sending request to: ${getUrl(uri)}"); // Imprime la URL completa
-  print("Request method: $method");
-  print("Headers: $headers");
-  print("Body: ${_getPayload(headers, body)}");
+  Future<Respuesta<HttpFailure, R>> request<R>(String uri,
+      {HttpMethod method = HttpMethod.get,
+      Map<String, String> headers = const {},
+      Map<String, String> params = const {},
+      Map<String, dynamic> body = const {},
+      R Function(String)? procesaExito}) async {
 
-  final response = await super.requestBody(uri,
-      method: method,
-      headers: _addHeaders(method, headers),
-      body: _getPayload(headers, body));
+    final response = await super.requestBody(uri, method: method, headers: _addHeaders(method, headers), body: _getPayload(headers, body));
+   
+    return response.when(
+      error: (err) {
+        Log.debug(
+            "[HttpAppFlutter response] Error en la solicitud HTTP: ⁉️  ${err.statusCode} - BodyError: ${err.bodyError}");
 
-  return response.when(
-    error: (err) {
-      print("Error response: ${err.toString()}");
-
-      if (err.bodyError != null) {
-        print("Error body: ${err.bodyError}"); // Imprime el cuerpo del error
+        return Respuesta.error(err);
+      },
+      exito: (body) {
+        Log.debug( "[HttpAppFlutter response] Exito en la solicitud HTTP: ${body.toString()}  ✅ ");
         try {
-          final Map<String, dynamic> errorJson = jsonDecode(err.bodyError!);
-          print("Parsed error body: $errorJson");
+          return _exito<R>(procesaExito, body);
         } catch (e) {
-          print("Error parsing response body: $e");
+          Log.debug( "[HttpAppFlutter super.requestBody ] Hubo un error${e.toString()}  ❌ ");
+          return Respuesta.error(HttpFailure(statusCode: -2, exception: e, bodyError:  "error al deserealizar el json"));
         }
-      }
-
-      return Respuesta.error(err);
-    },
-    exito: (body) {
-      print("Successful response: $body"); // Imprime la respuesta exitosa
-      try {
-        return _exito<R>(procesaExito, body);
-      } catch (e) {
-        print("Exception while processing response: $e");
-        return Respuesta.error(HttpFailure(statusCode: -1, exception: e));
-      }
-    },
-  );
-}
-
-
-  Respuesta<HttpFailure, R> _exito<R>(
-      R Function(String)? procesaExito, String body) {
-    print(
-        "Processing successful response: $body"); // Imprime el cuerpo de la respuesta procesada
-    if (procesaExito != null) {
-      return Respuesta.exito(procesaExito(body));
-    }
-
-    return Respuesta.exito(body as R);
+      },
+    );
   }
 
-  @override
-  String toString() {
-    return 'HostApi: $_hostApi';
+  Respuesta<HttpFailure, R> _exito<R>( R Function(String)? procesaExito, String body) {
+    try {
+      if (procesaExito != null) {
+        final result = procesaExito(body);
+        return Respuesta.exito(result);
+      }
+
+      return Respuesta.exito(body as R);
+    } catch (e) {
+      Log.debug( "[HttpAppFlutter super.requestBody _exito] Hubo un error al deserealizar json ${body.toString()}  ❌ ");
+      return Respuesta.error(HttpFailure(
+        statusCode: -1,
+        exception: e is Exception ? e : Exception(e.toString()),
+      ));
+    }
   }
 }

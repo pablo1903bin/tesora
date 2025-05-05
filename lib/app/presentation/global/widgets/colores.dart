@@ -36,4 +36,5 @@ const colorBlanco = Colors.white;
 const colorExito = Color.fromARGB(255, 27, 185, 32);
 const colorExito1 = Color.fromARGB(255, 214, 255, 215);
 const colorError = Colors.red;
+final colroError2 = Colors.redAccent.withOpacity(0.2);
 const colorError1 = Color.fromARGB(255, 255, 206, 203);
