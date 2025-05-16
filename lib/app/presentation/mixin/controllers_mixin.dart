@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tesora/app/presentation/controller/notificaciones_controller.dart';
 import 'package:tesora/app/presentation/controller/theme_controller.dart';
 import 'package:tesora/app/presentation/global/controller/validador_field_controller.dart';
 import 'package:tesora/app/presentation/modules/caja/controllers/caja_controller.dart';
@@ -13,6 +14,11 @@ mixin ControllersMixin on StatelessWidget {
   ThemeController getThemeController(BuildContext context) {
     return Provider.of<ThemeController>(context, listen: false);
   }
+
+NotificacionesController getNotificacionesController(BuildContext context) {
+  return Provider.of<NotificacionesController>(context, listen: false);
+}
+
 
   HomeController getHomeController(BuildContext context) {
     return Provider.of<HomeController>(context, listen: false);

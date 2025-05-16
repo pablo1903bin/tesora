@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tesora/app/presentation/global/widgets/colores.dart';
+import 'package:tesora/app/presentation/modules/notifications/widgets/notification_widget.dart';
 import 'package:tesora/app/presentation/modules/splash/widgets/background_image_widget.dart';
 import 'package:tesora/app/presentation/modules/splash/widgets/loading_animations_widget.dart';
 
@@ -56,35 +57,31 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // Crea la estructura principal de la pantalla.
+@override
+Widget build(BuildContext context) {
+  //Mi NotificationWidget envuelve a toda mi primer pantalla  
+  return NotificationWidget(
+    child: Scaffold(
       body: Stack(
-        // Usa un Stack para superponer widgets.
         children: [
-          // Imagen de fondo personalizada
           const BackgroundImage(
-            assetPath:
-                'lib/app/images/icon_splash.png', // Ruta de la imagen de fondo.
-            backgroundColor: colorSueveAzul, // Color de fondo personalizado.
+            assetPath: 'lib/app/images/icon_splash.png',
+            backgroundColor: colorSueveAzul,
           ),
-          // Animación de carga en la parte inferior
           Positioned(
-            bottom: MediaQuery.of(context).size.height /
-                20, // Posiciona el widget a una fracción de la altura de la pantalla.
+            bottom: MediaQuery.of(context).size.height / 20,
             left: 0,
             right: 0,
             child: const Center(
-              // Centra el widget de animación horizontalmente.
               child: LoadingAnimation(
-                animationPath:
-                    'lib/app/images/loading_splash2.json', // Ruta de la animación de carga.
+                animationPath: 'lib/app/images/loading_splash2.json',
               ),
             ),
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

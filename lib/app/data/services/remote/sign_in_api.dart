@@ -26,7 +26,7 @@ class SignInApi {
     required String email,
   }) async {
 
-    return await _http.request<dynamic>("/authentication/sign-up",
+    return await _http.request<dynamic>("/auth-service/authentication/sign-up",
         method: HttpMethod.post,
         headers: {
           "Content-Type": "application/json"
@@ -47,7 +47,7 @@ class SignInApi {
   Future<Respuesta<HttpFailure, UserLoginResponse>> loginUser({ required String username, required String password}) async {
   
     return await _http.request<UserLoginResponse>(
-        "/authentication/sign-in",
+        "/auth-service/authentication/sign-in",
         method: HttpMethod.post,
         headers: {
           "Content-Type": "application/json"

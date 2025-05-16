@@ -1,8 +1,8 @@
-
 import 'package:go_router/go_router.dart';
 import 'package:tesora/app/presentation/routes/caja/caja_routes.dart';
 import 'package:tesora/app/presentation/routes/cooperacion/cooperacion_routes.dart';
 import 'package:tesora/app/presentation/routes/gastos/gasto_routes.dart';
+import 'package:tesora/app/presentation/routes/notification/notification_routes.dart';
 import 'package:tesora/app/presentation/routes/settings/setting_route.dart';
 
 import '../modules/usuarios/controllers/state/usuarios_state.dart';
@@ -24,29 +24,24 @@ mixin Routes {
       OfflineRoute.offlineRoute,
       LoguinRoutes.loguin,
       HomeRoutes.home,
-
-
       CooperacionRoutes.crearCooperacion,
       CooperacionRoutes.coperaciones,
-          CooperacionRoutes.coperacionDetalle,
-
+      CooperacionRoutes.coperacionDetalle,
       UsuariosRoutes.usuarios,
       UsuariosRoutes.userDetails,
       UsuariosRoutes.crearUsuario,
       GastoRoutes.gastos,
-            GastoRoutes.gasto,
-
+      GastoRoutes.gasto,
+      NotificationRoutes.notificationsList,
+      NotificationRoutes.notificationDetail,
+      NotificationRoutes.notificationsConfig,
       SettingRoute.settings,
       CajaRoutes.caja,
       GoRouteHelper.goRoute<UsuariosController>(
-        RoutePath.listarUsuarios,
-        () => const UsuariosView(),
-        controller: () => UsuariosController(UsuariosState(
-              "Inicial",
-              "Algo mas",
-              "super",
-              permisos: [Permiso(1, "usuario")],
-              titulo: "Mr"))),
+          RoutePath.listarUsuarios, () => const UsuariosView(),
+          controller: () => UsuariosController(UsuariosState(
+              "Inicial", "Algo mas", "super",
+              permisos: [Permiso(1, "usuario")], titulo: "Mr"))),
     ],
   );
 

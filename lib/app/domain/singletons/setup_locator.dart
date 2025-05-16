@@ -8,9 +8,13 @@ import 'package:tesora/app/data/http/mock_http_app_flutter.dart';
 import 'package:tesora/app/data/local/secure_storage_service.dart';
 import 'package:tesora/app/data/local/shared_preferences_service.dart';
 import 'package:tesora/app/data/repositories_impl/cooperacion_repository_impl.dart';
+import 'package:tesora/app/data/repositories_impl/notificaciones_repository_impl_local.dart';
 import 'package:tesora/app/data/services/remote/cooperacion_api.dart';
 import 'package:tesora/app/data/services/remote/recordatori_api.dart';
 import 'package:tesora/app/domain/repositories/cooperacion_repository.dart';
+import 'package:tesora/app/domain/repositories/notificaciones_repository.dart';
+import 'package:tesora/app/presentation/controller/notificaciones_controller.dart';
+import 'package:tesora/app/presentation/controller/states/notificaciones_state.dart';
 import 'package:tesora/app/presentation/singletons/i18n_singleton.dart';
 
 import '../../data/http/http_app_flutter.dart';
@@ -36,13 +40,14 @@ class AppDependencies {
     SesionState? sesion,
     bool? mocEnabled,
   }) async {
-    _loadUtiles(); // Registra herramientas o servicios utilitarios
-    _loadApis(hostApi!, sesion!, mocEnabled!); // Registra servicios API (mock o reales)
-    _loadRepositorios(); // Registra los repositorios usados por la app
+    await _loadUtiles();
+    await _loadApis(hostApi!, sesion!,
+        mocEnabled!); // Registra servicios API (mock o reales)
+    await _loadRepositorios(); // Registra los repositorios usados por la app
   }
 
   /// Registra servicios comunes y utilitarios como localización, almacenamiento seguro y conectividad.
-  static void _loadUtiles() async {
+  static Future<void> _loadUtiles() async {
     // Registro de localización personalizada (texto traducido en la app)
     if (!GetIt.instance.isRegistered<I18nSingleton>()) {
       GetIt.instance.registerSingleton<I18nSingleton>(
@@ -82,10 +87,13 @@ class AppDependencies {
         sharedPreferencesService,
       );
     }
+
+  
   }
 
   /// Registra todos los servicios remotos (APIs y HTTP), considerando si usar mocks o no.
-  static void _loadApis(String? hostApi, SesionState sesion, bool mocEnabled) async {
+  static Future<void> _loadApis(
+      String? hostApi, SesionState sesion, bool mocEnabled) async {
     // Registro del canal nativo para comunicación con Android/iOS
     if (!GetIt.instance.isRegistered<MethodChannel>()) {
       GetIt.instance.registerSingleton<MethodChannel>(
@@ -174,7 +182,7 @@ class AppDependencies {
   }
 
   /// Registra los repositorios que contienen la lógica de negocio y consumen APIs.
-  static void _loadRepositorios() {
+  static Future<void> _loadRepositorios() async {
     // Repositorio para verificación de conectividad
     if (!GetIt.instance.isRegistered<ConectivityRepository>()) {
       GetIt.instance.registerSingleton<ConectivityRepository>(
@@ -209,5 +217,19 @@ class AppDependencies {
       );
     }
 
+    // Repositorio de notificaciones (local por ahora)
+    if (!GetIt.instance.isRegistered<NotificacionesRepository>()) {
+      GetIt.instance.registerSingleton<NotificacionesRepository>(
+        NotificacionesRepositoryImplLocal(GetIt.instance<SharedPreferencesService>()),
+      );
+    }
+
+
+      // Controlador de notificaciones 📢 (para uso sin context)
+    if (!GetIt.instance.isRegistered<NotificacionesController>()) {
+      GetIt.instance.registerSingleton<NotificacionesController>(
+          NotificacionesController(const NotificacionesState()));
+    }
+    
   }
 }

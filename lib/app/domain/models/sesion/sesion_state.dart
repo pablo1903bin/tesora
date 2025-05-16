@@ -8,6 +8,7 @@ class SesionState with _$SesionState {
   factory SesionState(
     String usuario,
     String sessionID,
+        String token,
     List<String> cookies
   ) = _SesionState;
 

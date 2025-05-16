@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:tesora/app/domain/models/home/model.dart';
-
 import '../failures/token/token_failure.dart';
 import '../functional/respuesta.dart';
 
@@ -14,6 +12,5 @@ abstract class NativeRepository {
 
   Future<String?> getSOVersion();
 
-  Future<void> programarAlarma({required Model model});
 
 }

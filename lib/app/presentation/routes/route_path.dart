@@ -32,6 +32,12 @@ class RoutePath {
 
   static const dialog = "/usuarios/dialog";
 
+
+
+  static const notificationWidget = "/notificationWidget";
+    static const notifications = "/notifications";
+  static const notificationsConfigs = "/notifications/configs";
+  static const notificationDetails ="/notificationDetail";
 //  SOlucionar  esto
   static const inicial = splash;
 }

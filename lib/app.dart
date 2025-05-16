@@ -16,32 +16,34 @@ class MyApp extends StatelessWidget with ControllersMixin, Routes, I18NMixin {
 
   @override
   Widget build(BuildContext context) {
-    // Actualiza el idioma para la aplicación usando el singleton de i18n
+    // Actualiza idioma
     i18nSingleton.update(TranslationsCommons.of(context));
-    GetIt.instance<I18nCommonsSingleton>().update(
-        TranslationProvider.of(context).locale.flutterLocale.languageCode);
 
-    // Escucha los cambios en el controlador de temas
+    GetIt.instance<I18nCommonsSingleton>().update(
+      TranslationProvider.of(context).locale.flutterLocale.languageCode,
+    );
+
     return Consumer<ThemeController>(
       builder: (context, themeController, child) {
         return MaterialApp.router(
-          title: "Tesora", // Título de la aplicación
+          title: "Tesora",
           supportedLocales: const [
-            Locale('es', 'ES'), // Soporte para idioma Español
-            Locale('en', 'US'), // Soporte para idioma Inglés
+            Locale('es', 'ES'),
+            Locale('en', 'US'),
           ],
           localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate, // Soporte para material design
-            GlobalWidgetsLocalizations.delegate, // Soporte para widgets
-            GlobalCupertinoLocalizations.delegate, // Soporte para Cupertino
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
-          // Define el modo de tema basado en el controlador de estado
           themeMode: themeController.state.themeMode,
-          theme: AppThemes.lightTheme, // Tema claro de la aplicación
-          darkTheme: AppThemes.darkTheme, // Tema oscuro de la aplicación
-          debugShowCheckedModeBanner: false, // Oculta el banner de debug
-          routerConfig: router, // Configuración de rutas para navegación
-          locale: TranslationProvider.of(context).locale.flutterLocale, // Idioma actual
+          theme: AppThemes.lightTheme,
+          darkTheme: AppThemes.darkTheme,
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
+          locale: TranslationProvider.of(context).locale.flutterLocale,
+
+
         );
       },
     );

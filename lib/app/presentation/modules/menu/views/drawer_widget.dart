@@ -156,6 +156,31 @@ class AppDrawer extends StatelessWidget with ControllersMixin {
                     },
                   ),
                   ListTile(
+                    leading:
+                        const Icon(Icons.notifications, color: colorAlterno2),
+                    title: autoSizeText(
+                        titulo: "Notificaciones",
+                        color: esDark ? colorAlterno5 : colorAlterno2,
+                        fontSize: 18,
+                        align: TextAlign.start),
+                    onTap: () {
+                      Navigator.pop(context);
+                      context.go(RoutePath.notifications);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.group, color: colorAlterno2),
+                    title: autoSizeText(
+                        titulo: "Grupos",
+                        color: esDark ? colorAlterno5 : colorAlterno2,
+                        fontSize: 18,
+                        align: TextAlign.start),
+                    onTap: () {
+                      Navigator.pop(context);
+                      context.go(RoutePath.home);
+                    },
+                  ),
+                  ListTile(
                     leading: const Icon(Icons.folder),
                     title: autoSizeText(
                         titulo: "Expedientes",

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SesionState {
   String get usuario => throw _privateConstructorUsedError;
   String get sessionID => throw _privateConstructorUsedError;
+  String get token => throw _privateConstructorUsedError;
   List<String> get cookies => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,8 @@ abstract class $SesionStateCopyWith<$Res> {
           SesionState value, $Res Function(SesionState) then) =
       _$SesionStateCopyWithImpl<$Res, SesionState>;
   @useResult
-  $Res call({String usuario, String sessionID, List<String> cookies});
+  $Res call(
+      {String usuario, String sessionID, String token, List<String> cookies});
 }
 
 /// @nodoc
@@ -49,6 +51,7 @@ class _$SesionStateCopyWithImpl<$Res, $Val extends SesionState>
   $Res call({
     Object? usuario = null,
     Object? sessionID = null,
+    Object? token = null,
     Object? cookies = null,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +62,10 @@ class _$SesionStateCopyWithImpl<$Res, $Val extends SesionState>
       sessionID: null == sessionID
           ? _value.sessionID
           : sessionID // ignore: cast_nullable_to_non_nullable
+              as String,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String,
       cookies: null == cookies
           ? _value.cookies
@@ -76,7 +83,8 @@ abstract class _$$SesionStateImplCopyWith<$Res>
       __$$SesionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String usuario, String sessionID, List<String> cookies});
+  $Res call(
+      {String usuario, String sessionID, String token, List<String> cookies});
 }
 
 /// @nodoc
@@ -92,6 +100,7 @@ class __$$SesionStateImplCopyWithImpl<$Res>
   $Res call({
     Object? usuario = null,
     Object? sessionID = null,
+    Object? token = null,
     Object? cookies = null,
   }) {
     return _then(_$SesionStateImpl(
@@ -102,6 +111,10 @@ class __$$SesionStateImplCopyWithImpl<$Res>
       null == sessionID
           ? _value.sessionID
           : sessionID // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String,
       null == cookies
           ? _value._cookies
@@ -114,13 +127,16 @@ class __$$SesionStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SesionStateImpl implements _SesionState {
-  _$SesionStateImpl(this.usuario, this.sessionID, final List<String> cookies)
+  _$SesionStateImpl(
+      this.usuario, this.sessionID, this.token, final List<String> cookies)
       : _cookies = cookies;
 
   @override
   final String usuario;
   @override
   final String sessionID;
+  @override
+  final String token;
   final List<String> _cookies;
   @override
   List<String> get cookies {
@@ -131,7 +147,7 @@ class _$SesionStateImpl implements _SesionState {
 
   @override
   String toString() {
-    return 'SesionState(usuario: $usuario, sessionID: $sessionID, cookies: $cookies)';
+    return 'SesionState(usuario: $usuario, sessionID: $sessionID, token: $token, cookies: $cookies)';
   }
 
   @override
@@ -142,11 +158,12 @@ class _$SesionStateImpl implements _SesionState {
             (identical(other.usuario, usuario) || other.usuario == usuario) &&
             (identical(other.sessionID, sessionID) ||
                 other.sessionID == sessionID) &&
+            (identical(other.token, token) || other.token == token) &&
             const DeepCollectionEquality().equals(other._cookies, _cookies));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, usuario, sessionID,
+  int get hashCode => Object.hash(runtimeType, usuario, sessionID, token,
       const DeepCollectionEquality().hash(_cookies));
 
   @JsonKey(ignore: true)
@@ -158,12 +175,14 @@ class _$SesionStateImpl implements _SesionState {
 
 abstract class _SesionState implements SesionState {
   factory _SesionState(final String usuario, final String sessionID,
-      final List<String> cookies) = _$SesionStateImpl;
+      final String token, final List<String> cookies) = _$SesionStateImpl;
 
   @override
   String get usuario;
   @override
   String get sessionID;
+  @override
+  String get token;
   @override
   List<String> get cookies;
   @override

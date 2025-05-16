@@ -19,6 +19,8 @@ class AppFlutterModule extends StatelessWidget {
           ChangeNotifierProvider<NativeChannelController>(
             create: (context) => NativeChannelController(NativeChannelState(platform: platform)),
           ),
+
+          
         ],
         child: MyApp(),
       ),

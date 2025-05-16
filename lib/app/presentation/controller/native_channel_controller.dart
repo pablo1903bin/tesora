@@ -56,7 +56,7 @@ class NativeChannelController extends StateNotifier<NativeChannelState>
 
   void _onGetRoute(Map<dynamic, dynamic> params) {
     sesionRepository.replaceSession(SesionState(params["usuario"],
-        params["sessionID"], parseCookies(params["cookies"])));
+        params["sessionID"], "", parseCookies(params["cookies"])));
 
     if (state.navigatorKey != null &&
         state.navigatorKey!.currentContext != null) {
